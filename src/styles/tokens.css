@@ -1,0 +1,23 @@
+:root{
+  /* ---- palette (verbatim from brief) ---- */
+  --night:#1c0c13; --night-2:#2a121b;
+  --wood:#5e1d28; --wood-dark:#431019;
+  --gold:#c9a24b; --gold-lt:#eccd83; --ivory:#f1e3c6;
+  --marigold:#e8923a; --glow:#ffd98a;
+
+  /* ---- extra wood shades for depth (derived) ---- */
+  --wood-lt:#6b2230; --wood-mid:#511723; --wood-deep:#3c0e17;
+  --brass:#d3ab53; --brass-lt:#f8e3a0; --brass-dk:#855c1d;
+  --iron:#2c2c2e; --iron-lt:#454548;
+
+  /* ---- type ---- */
+  --font-display:"Cormorant Garamond", serif;
+  --font-deva:"Tiro Devanagari Sanskrit", serif;
+  --font-script:"Tangerine", cursive;
+
+  /* ---- wood grain texture: SVG fractal-noise, vertical streaks (real plank grain) ---- */
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='460'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.16 0.012' numOctaves='4' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.04 0 0 0 0 0.015 0 0 0 0 0.02 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");
+
+  /* one brass dome stud, used tiled along stiles & rails */
+  --stud:radial-gradient(circle at 50% 38%, var(--brass-lt) 0 16%, var(--brass) 26%, var(--brass-dk) 46%, rgba(0,0,0,.4) 58%, transparent 64%);
+}

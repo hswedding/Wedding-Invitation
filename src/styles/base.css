@@ -1,0 +1,17 @@
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:radial-gradient(circle at 50% 35%, var(--night-2) 0%, var(--night) 60%, #120810 100%);
+  color:var(--ivory);
+  font-family:var(--font-display);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{ max-width:100%; display:block; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+}

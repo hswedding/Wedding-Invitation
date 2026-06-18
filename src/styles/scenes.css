@@ -1,0 +1,264 @@
+/* ============================================================
+   SCENE 1 — THE DOOR  (pure CSS 3D, no GSAP)
+   ============================================================ */
+.scene{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.stage{
+  position:relative;
+  width:min(86vw, 460px);
+  height:min(122vw, 640px);
+  perspective:1700px;
+  cursor:pointer;
+}
+
+/* ---------- content revealed BEHIND the doors ---------- */
+.reveal{
+  position:absolute;
+  inset:6% 5%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border-radius:150px 150px 12px 12px;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(255,210,130,.20), transparent 64%),
+    linear-gradient(180deg,#23121a,#160a10);
+  box-shadow:inset 0 0 90px rgba(0,0,0,.75);
+  opacity:0;
+  transform:scale(.94);
+  transition:opacity 1.1s ease .55s, transform 1.3s ease .55s;
+  padding:7% 9%;
+  gap:.4rem;
+}
+.open .reveal{ opacity:1; transform:scale(1); }
+
+.mandala{ width:min(34vw,150px); height:auto; filter:drop-shadow(0 0 18px rgba(255,200,120,.35)); }
+.mandala .om{ font-family:var(--font-deva); font-size:62px; fill:var(--gold-lt); }
+.invocation{ font-family:var(--font-deva); font-size:clamp(.95rem,3.4vw,1.25rem); color:var(--gold-lt); letter-spacing:.04em; margin-top:.3rem; opacity:.92; }
+.families{ font-style:italic; font-size:clamp(.8rem,2.6vw,1rem); color:var(--ivory); opacity:.7; margin-top:1.1rem; letter-spacing:.02em; }
+.names{ font-size:clamp(2.4rem,11vw,4rem); font-weight:500; line-height:1.04; color:var(--ivory); margin-top:.1rem; }
+.amp{ display:block; font-family:var(--font-script); font-size:clamp(3rem,15vw,5.5rem); color:var(--gold); line-height:.5; margin:.15rem 0; }
+.shubh{ font-family:var(--font-deva); font-size:clamp(1.1rem,4.4vw,1.55rem); color:var(--marigold); margin-top:.9rem; letter-spacing:.03em; }
+.date{ font-size:clamp(.85rem,3vw,1.05rem); letter-spacing:.34em; text-transform:uppercase; color:var(--gold-lt); margin-top:.5rem; padding-top:.7rem; border-top:1px solid rgba(201,162,75,.4); }
+
+/* ============================================================
+   THE DOORS — carved haveli double doors
+   ============================================================ */
+.doors{ position:absolute; inset:0; z-index:4; transform-style:preserve-3d; }
+
+.door{
+  position:absolute;
+  top:0; bottom:0;
+  width:50%;
+  background:
+    /* plank seams */
+    repeating-linear-gradient(90deg,
+      rgba(0,0,0,0) 0 62px,
+      rgba(0,0,0,.30) 62px 63px,
+      rgba(255,222,150,.05) 63px 64px),
+    /* fractal wood grain */
+    var(--grain),
+    /* base wood */
+    linear-gradient(180deg, var(--wood-lt) 0%, var(--wood-mid) 55%, var(--wood-deep) 100%);
+  background-size: auto, 220px 460px, auto;
+  box-shadow:
+    inset 0 0 80px rgba(0,0,0,.6),
+    inset 0 0 0 1px rgba(0,0,0,.45);
+  transition:transform 1.7s cubic-bezier(.62,.02,.2,1);
+  backface-visibility:hidden;
+  overflow:hidden;
+}
+.door.left{ left:0; transform-origin:left center; border-radius:150px 0 0 12px; }
+.door.right{ right:0; transform-origin:right center; border-radius:0 150px 12px 0; }
+.open .door.left{ transform:rotateY(110deg); }
+.open .door.right{ transform:rotateY(-110deg); }
+
+/* ---------- recessed, beveled panels ---------- */
+.panel{
+  position:absolute;
+  left:14%; right:14%;
+  background:
+    var(--grain),
+    linear-gradient(180deg, var(--wood-mid), var(--wood-deep));
+  background-size:160px 320px, auto;
+  border:1px solid rgba(201,162,75,.40);
+  box-shadow:
+    inset 3px 3px 9px rgba(0,0,0,.75),
+    inset -2px -2px 7px rgba(255,210,140,.10),
+    0 0 0 4px rgba(67,16,25,.55);
+}
+/* gold beading inside each panel */
+.panel::before{
+  content:""; position:absolute; inset:7px;
+  border:1px solid rgba(201,162,75,.30);
+  border-radius:inherit;
+}
+.panel.arch{ top:7%;  height:33%; border-radius:78px 78px 5px 5px; }
+.panel.arch::before{ border-radius:70px 70px 4px 4px; }
+.panel.mid{  top:45%; height:24%; border-radius:5px; }
+.panel.low{  top:72%; height:21%; border-radius:5px; }
+
+/* lotus boss centered in the arched panel */
+.panel.arch::after{
+  content:""; position:absolute; top:30%; left:50%;
+  width:30px; height:30px; transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(circle at 40% 35%, var(--brass-lt), var(--brass) 55%, var(--brass-dk));
+  box-shadow:0 1px 3px rgba(0,0,0,.6), 0 0 0 4px rgba(67,16,25,.5);
+}
+
+/* ---------- brass stud strips framing the door ---------- */
+.stud-col, .stud-row{
+  position:absolute; z-index:2;
+  background-image:var(--stud);
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.55));
+  pointer-events:none;
+}
+.stud-col{ width:14px; background-size:14px 24px; background-repeat:repeat-y; top:7%; bottom:7%; }
+.stud-row{ height:14px; background-size:24px 14px; background-repeat:repeat-x; left:9%; right:9%; }
+.door.left  .stud-col.outer{ left:3.5%; }
+.door.right .stud-col.outer{ right:3.5%; }
+.door.left  .stud-col.seam { right:3.5%; }
+.door.right .stud-col.seam { left:3.5%; }
+.stud-row.top{ top:3.5%; }
+.stud-row.bot{ bottom:3.5%; }
+
+/* ---------- iron strap hinges on the outer edge ---------- */
+.strap{
+  position:absolute; height:15px; width:40%; z-index:3;
+  background:linear-gradient(180deg, var(--iron-lt), var(--iron) 55%, #161617);
+  box-shadow:0 2px 4px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08);
+  border-radius:3px;
+}
+.strap::after{ /* brass rivet at inner tip */
+  content:""; position:absolute; top:50%; width:9px; height:9px; transform:translateY(-50%);
+  border-radius:50%;
+  background:radial-gradient(circle at 40% 35%, var(--brass-lt), var(--brass) 60%, var(--brass-dk));
+}
+.door.left  .strap{ left:0; border-radius:0 3px 3px 0; }
+.door.right .strap{ right:0; border-radius:3px 0 0 3px; }
+.door.left  .strap::after{ right:8px; }
+.door.right .strap::after{ left:8px; }
+.strap.top{ top:15%; }
+.strap.bot{ bottom:15%; }
+
+/* ---------- brass ring (kada) handles at the seam ---------- */
+.ring{
+  position:absolute; top:46%; z-index:3;
+  width:44px; height:44px; border-radius:50%;
+  border:7px solid transparent;
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    conic-gradient(from 210deg, var(--brass-dk), var(--brass-lt), var(--brass), var(--brass-dk), var(--brass-lt), var(--brass), var(--brass-dk)) border-box;
+  box-shadow:0 4px 7px rgba(0,0,0,.5), inset 0 0 5px rgba(0,0,0,.45);
+}
+.ring::before{ /* back plate where the ring mounts */
+  content:""; position:absolute; top:-16px; left:50%; transform:translateX(-50%);
+  width:20px; height:20px; border-radius:50%;
+  background:radial-gradient(circle at 40% 35%, var(--brass-lt), var(--brass) 55%, var(--brass-dk));
+  box-shadow:0 1px 2px rgba(0,0,0,.5);
+}
+.door.left  .ring{ right:9%; }
+.door.right .ring{ left:9%; }
+
+/* ---------- warm light leaking through the seam (closed) ---------- */
+.seam{
+  position:absolute; top:6%; bottom:2%; left:50%;
+  width:6px; transform:translateX(-50%); z-index:3;
+  background:linear-gradient(180deg, transparent, var(--glow), transparent);
+  filter:blur(3px); opacity:.7;
+  transition:opacity .5s ease;
+}
+.open .seam{ opacity:0; }
+
+/* ============================================================
+   CHAUKHAT — carved arched door frame (decorative overlay)
+   ============================================================ */
+.chaukhat{
+  position:absolute; inset:0; z-index:6;
+  width:100%; height:100%;
+  pointer-events:none;
+}
+
+/* ---------- marigold toran across the top ---------- */
+.toran{
+  position:absolute; top:-2px; left:50%; transform:translateX(-50%);
+  width:104%; z-index:7; pointer-events:none; opacity:.95;
+}
+
+/* ---------- tap hint ---------- */
+.hint{
+  position:absolute; bottom:-3.2rem; left:0; right:0; text-align:center; z-index:8;
+  letter-spacing:.34em; text-transform:uppercase; font-size:.78rem; color:var(--gold-lt);
+  animation:breathe 2.4s ease-in-out infinite;
+  transition:opacity .5s ease;
+}
+.hint span{ display:inline-block; margin:0 .6rem; color:var(--marigold); }
+.open .hint{ opacity:0; pointer-events:none; }
+@keyframes breathe{ 0%,100%{opacity:.45; transform:translateY(0)} 50%{opacity:1; transform:translateY(-4px)} }
+
+/* ---------- ambient embers (closed) ---------- */
+.ember{
+  position:absolute; width:4px; height:4px; border-radius:50%; background:var(--glow);
+  filter:blur(1px); opacity:0; z-index:1; animation:float 7s ease-in infinite;
+}
+@keyframes float{ 0%{opacity:0; transform:translateY(20px) scale(.6)} 20%{opacity:.7} 80%{opacity:.5} 100%{opacity:0; transform:translateY(-180px) scale(1)} }
+
+/* ---------- falling marigold petals (after open) ---------- */
+.petals{ position:absolute; inset:0; z-index:9; pointer-events:none; overflow:hidden; opacity:0; }
+.open .petals{ opacity:1; }
+.petal{
+  position:absolute; top:-30px; width:14px; height:14px;
+  background:radial-gradient(circle at 35% 30%, var(--glow), var(--marigold) 70%);
+  border-radius:60% 40% 60% 40%; opacity:0;
+  box-shadow:0 0 6px rgba(232,146,58,.4);
+}
+.open .petal{ animation:fall linear infinite; }
+@keyframes fall{
+  0%{ opacity:0; transform:translateY(-30px) rotate(0) }
+  10%{ opacity:.95 }
+  90%{ opacity:.7 }
+  100%{ opacity:0; transform:translateY(105svh) rotate(540deg) }
+}
+
+/* ---------- scroll cue ---------- */
+.scroll-cue{
+  position:absolute; bottom:1.4rem; left:50%; transform:translateX(-50%); z-index:10;
+  text-align:center; color:var(--gold-lt); opacity:0;
+  transition:opacity 1s ease 1.6s; letter-spacing:.3em; font-size:.7rem; text-transform:uppercase;
+}
+.open .scroll-cue{ opacity:.85; }
+.scroll-cue .arrow{ display:block; margin:.5rem auto 0; width:1px; height:34px;
+  background:linear-gradient(var(--gold-lt), transparent); animation:drop 1.8s ease-in-out infinite; }
+@keyframes drop{ 0%,100%{transform:scaleY(.4); opacity:.4} 50%{transform:scaleY(1); opacity:1} }
+
+/* ============================================================
+   SCENE 2 TEASER — placeholder scroll reveals (GSAP comes later)
+   ============================================================ */
+.story{ padding:18vh 8vw; max-width:760px; margin:0 auto; text-align:center; }
+.reveal-up{ opacity:0; transform:translateY(40px); transition:opacity 1s ease, transform 1s ease; }
+.reveal-up.in{ opacity:1; transform:none; }
+.story .eyebrow{ letter-spacing:.4em; text-transform:uppercase; font-size:.75rem; color:var(--marigold); margin-bottom:1rem; }
+.story h2{ font-size:clamp(1.8rem,6vw,3rem); font-weight:500; color:var(--ivory); line-height:1.15; }
+.story p{ font-size:clamp(1rem,3.4vw,1.25rem); color:rgba(241,227,198,.75); margin-top:1.2rem; font-style:italic; line-height:1.6; }
+.divider{ margin:3rem auto; width:120px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); position:relative; }
+.divider::after{ content:"✦"; position:absolute; top:-.7rem; left:50%; transform:translateX(-50%); color:var(--gold); font-size:.8rem; }
+.note{ padding:0 8vw 14vh; max-width:680px; margin:0 auto; text-align:center; color:rgba(241,227,198,.45); font-size:.95rem; font-style:italic; }
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  *{ transition-duration:.01ms !important; animation:none !important; }
+  .open .reveal{ opacity:1; transform:none; }
+  .open .door.left{ transform:rotateY(110deg); }
+  .open .door.right{ transform:rotateY(-110deg); }
+}
