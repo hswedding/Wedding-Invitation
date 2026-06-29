@@ -1,12 +1,9 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-// Static site, no framework. Vite is used only as a dev server + bundler.
+// Single-page wedding invitation. No router, no SSR — mirrors the Invifest reference.
 export default defineConfig({
-  root: '.',
-  server: { open: true, host: true },
-  build: {
-    target: 'es2018',
-    outDir: 'dist',
-    emptyOutDir: true
-  }
-});
+  plugins: [react()],
+  server: { host: true, port: 5173 },
+  build: { target: 'es2020', cssCodeSplit: false },
+})

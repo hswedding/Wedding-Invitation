@@ -1,171 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shubh Vivah — Aarav & Diya</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Tangerine:wght@400;700&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap" rel="stylesheet" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- width=device-width, zoom allowed (never disable zoom — a11y) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#fdfbf7" />
 
-  <!-- ============ SCENE 1: THE DOOR ============ -->
-  <section class="scene">
-    <div class="stage" id="stage" role="button" tabindex="0" aria-label="Open the invitation">
+    <title>Aarav & Diya · Wedding Invitation</title>
+    <meta name="description" content="With the blessings of our families, we joyfully invite you to celebrate the wedding of Aarav & Diya — 24 November 2026." />
 
-      <!-- content revealed behind the doors -->
-      <div class="reveal">
-        <svg class="mandala" viewBox="0 0 200 200" aria-hidden="true">
-          <defs>
-            <path id="petal" d="M100,100 C92,62 92,42 100,22 C108,42 108,62 100,100 Z" fill="rgba(201,162,75,.85)"/>
-            <path id="petal2" d="M100,100 C94,72 94,58 100,44 C106,58 106,72 100,100 Z" fill="rgba(236,205,131,.9)"/>
-          </defs>
-          <g>
-            <use href="#petal" transform="rotate(0 100 100)"/><use href="#petal" transform="rotate(30 100 100)"/>
-            <use href="#petal" transform="rotate(60 100 100)"/><use href="#petal" transform="rotate(90 100 100)"/>
-            <use href="#petal" transform="rotate(120 100 100)"/><use href="#petal" transform="rotate(150 100 100)"/>
-            <use href="#petal" transform="rotate(180 100 100)"/><use href="#petal" transform="rotate(210 100 100)"/>
-            <use href="#petal" transform="rotate(240 100 100)"/><use href="#petal" transform="rotate(270 100 100)"/>
-            <use href="#petal" transform="rotate(300 100 100)"/><use href="#petal" transform="rotate(330 100 100)"/>
-          </g>
-          <g>
-            <use href="#petal2" transform="rotate(15 100 100)"/><use href="#petal2" transform="rotate(45 100 100)"/>
-            <use href="#petal2" transform="rotate(75 100 100)"/><use href="#petal2" transform="rotate(105 100 100)"/>
-            <use href="#petal2" transform="rotate(135 100 100)"/><use href="#petal2" transform="rotate(165 100 100)"/>
-            <use href="#petal2" transform="rotate(195 100 100)"/><use href="#petal2" transform="rotate(225 100 100)"/>
-            <use href="#petal2" transform="rotate(255 100 100)"/><use href="#petal2" transform="rotate(285 100 100)"/>
-            <use href="#petal2" transform="rotate(315 100 100)"/><use href="#petal2" transform="rotate(345 100 100)"/>
-          </g>
-          <circle cx="100" cy="100" r="34" fill="#1a0d12" stroke="rgba(201,162,75,.7)" stroke-width="2"/>
-          <text class="om" x="100" y="122" text-anchor="middle">ॐ</text>
-        </svg>
+    <!-- WhatsApp / Open Graph preview (1200×630). Replace og:image with your hosted card. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Aarav & Diya · You're Invited" />
+    <meta property="og:description" content="Join us as we celebrate our wedding — 24 November 2026. Tap to open your invitation." />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aarav & Diya · You're Invited" />
+    <meta name="twitter:description" content="Join us as we celebrate our wedding — 24 November 2026." />
+    <meta name="twitter:image" content="/og-image.jpg" />
 
-        <div class="invocation">॥ श्री गणेशाय नमः ॥</div>
-        <div class="families">Together with their families</div>
-        <div class="names">Aarav<span class="amp">&amp;</span>Diya</div>
-        <div class="shubh">शुभ विवाह</div>
-        <div class="date">12 · 12 · 2026</div>
-      </div>
-
-      <!-- the doors -->
-      <div class="doors">
-        <div class="door left">
-          <div class="panel arch"></div>
-          <div class="panel mid"></div>
-          <div class="panel low"></div>
-          <span class="stud-col outer"></span>
-          <span class="stud-col seam"></span>
-          <span class="stud-row top"></span>
-          <span class="stud-row bot"></span>
-          <span class="strap top"></span>
-          <span class="strap bot"></span>
-          <span class="ring"></span>
-        </div>
-        <div class="door right">
-          <div class="panel arch"></div>
-          <div class="panel mid"></div>
-          <div class="panel low"></div>
-          <span class="stud-col outer"></span>
-          <span class="stud-col seam"></span>
-          <span class="stud-row top"></span>
-          <span class="stud-row bot"></span>
-          <span class="strap top"></span>
-          <span class="strap bot"></span>
-          <span class="ring"></span>
-        </div>
-      </div>
-
-      <div class="seam"></div>
-
-      <!-- carved arched frame (chaukhat) over the door edges -->
-      <svg class="chaukhat" viewBox="0 0 440 640" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="cg" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#7a5a22"/>
-            <stop offset=".5" stop-color="#eccd83"/>
-            <stop offset="1" stop-color="#7a5a22"/>
-          </linearGradient>
-          <linearGradient id="pw" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#5e1d28"/>
-            <stop offset="1" stop-color="#3c0e17"/>
-          </linearGradient>
-        </defs>
-
-        <!-- side pillars -->
-        <rect x="0"   y="150" width="24" height="490" fill="url(#pw)" stroke="url(#cg)" stroke-width="3"/>
-        <rect x="416" y="150" width="24" height="490" fill="url(#pw)" stroke="url(#cg)" stroke-width="3"/>
-        <!-- capitals -->
-        <rect x="-4"  y="148" width="32" height="14" rx="2" fill="url(#cg)"/>
-        <rect x="412" y="148" width="32" height="14" rx="2" fill="url(#cg)"/>
-
-        <!-- double arch molding -->
-        <path d="M12,168 C12,86 116,40 220,40 C324,40 428,86 428,168"
-              fill="none" stroke="url(#cg)" stroke-width="10" stroke-linecap="round"/>
-        <path d="M40,168 C40,108 128,66 220,66 C312,66 400,108 400,168"
-              fill="none" stroke="url(#cg)" stroke-width="4" stroke-linecap="round" opacity=".75"/>
-
-        <!-- keystone medallion at the apex -->
-        <g transform="translate(220,42)">
-          <path d="M0,-18 L14,0 L0,18 L-14,0 Z" fill="url(#cg)"/>
-          <circle r="5" fill="#3c0e17"/>
-        </g>
-
-        <!-- lotus bosses along the arch -->
-        <circle cx="96"  cy="78"  r="6" fill="url(#cg)"/>
-        <circle cx="344" cy="78"  r="6" fill="url(#cg)"/>
-        <circle cx="40"  cy="140" r="5" fill="url(#cg)"/>
-        <circle cx="400" cy="140" r="5" fill="url(#cg)"/>
-      </svg>
-
-      <!-- marigold toran across the top -->
-      <svg class="toran" viewBox="0 0 440 60" aria-hidden="true">
-        <path d="M10,8 Q220,72 430,8" fill="none" stroke="#7a3d12" stroke-width="2"/>
-        <g fill="#e8923a">
-          <circle cx="40" cy="22" r="9"/><circle cx="80" cy="30" r="9"/><circle cx="120" cy="37" r="9"/>
-          <circle cx="160" cy="43" r="9"/><circle cx="200" cy="46" r="9"/><circle cx="240" cy="46" r="9"/>
-          <circle cx="280" cy="43" r="9"/><circle cx="320" cy="37" r="9"/><circle cx="360" cy="30" r="9"/>
-          <circle cx="400" cy="22" r="9"/>
-        </g>
-        <g fill="#7a9c3a">
-          <path d="M60,38 l-6,14 l12,0 z"/><path d="M140,52 l-6,14 l12,0 z"/>
-          <path d="M220,56 l-6,14 l12,0 z"/><path d="M300,52 l-6,14 l12,0 z"/><path d="M380,38 l-6,14 l12,0 z"/>
-        </g>
-      </svg>
-
-      <div class="hint"><span>✦</span>Tap to open<span>✦</span></div>
-
-      <!-- ambient embers -->
-      <div class="ember" style="left:20%;bottom:10%;animation-delay:0s"></div>
-      <div class="ember" style="left:75%;bottom:15%;animation-delay:1.5s"></div>
-      <div class="ember" style="left:45%;bottom:5%;animation-delay:3s"></div>
-      <div class="ember" style="left:88%;bottom:25%;animation-delay:4.5s"></div>
-      <div class="ember" style="left:10%;bottom:30%;animation-delay:2.2s"></div>
-
-      <!-- petals (spawned after open) -->
-      <div class="petals" id="petals"></div>
-
-      <div class="scroll-cue">Scroll<span class="arrow"></span></div>
-    </div>
-  </section>
-
-  <!-- ============ SCENE 2 TEASER (scroll reveal placeholder) ============ -->
-  <section class="story">
-    <div class="reveal-up">
-      <div class="eyebrow">Our Story</div>
-      <h2>Two families, one celebration</h2>
-      <p>This is where the scroll story begins — childhood photos fading in, the proposal, the haldi, the date counting down. Each section reveals as you scroll.</p>
-    </div>
-    <div class="divider reveal-up"></div>
-    <div class="reveal-up">
-      <div class="eyebrow">Save the Date</div>
-      <h2>12 December 2026</h2>
-      <p>Chandigarh · followed by reception</p>
-    </div>
-  </section>
-
-  <p class="note">↑ Phase 1: the door scene + a taste of scroll reveals. Full scroll choreography (parallax, pinned scenes, draw-on text) arrives with GSAP in phase 2.</p>
-
-  <script type="module" src="/src/main.js"></script>
-</body>
+    <!-- Fonts: preconnect + the Google families used by the reference, plus a romantic script. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Tenor+Sans&family=Italianno&family=Tangerine:wght@400;700&family=Great+Vibes&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

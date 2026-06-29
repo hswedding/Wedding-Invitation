@@ -1,23 +1,44 @@
-:root{
-  /* ---- palette (verbatim from brief) ---- */
-  --night:#1c0c13; --night-2:#2a121b;
-  --wood:#5e1d28; --wood-dark:#431019;
-  --gold:#c9a24b; --gold-lt:#eccd83; --ivory:#f1e3c6;
-  --marigold:#e8923a; --glow:#ffd98a;
+/* Design tokens — from the Invifest reference :root (used verbatim), plus a
+   spacing + z-index scale (ui-ux-pro-max: 4/8pt rhythm, layered z-index). */
+:root {
+  /* base */
+  --cream: #fdfbf7; --cream-2: #faf5f0; --cream-3: #f2eae1; --white: #fff;
+  /* dusty rose / sage family (primary) */
+  --sage-pale: #fff9f8; --sage-light: #f7dcda; --sage: #e2b4b1;
+  --sage-border: #eac9c7; --sage-dark: #ba7a76; --sage-deep: #8a4f4c;
+  /* gold accent */
+  --gold: #d4af37; --gold-light: #e8ce73; --gold-pale: #f7efc8;
+  /* type */
+  --text-dark: #2c2a29; --text-mid: #5a5552; --text-light: #8c8480; --border: #f0e5db;
+  /* shadows */
+  --shadow: 0 24px 64px -12px #8a4f4c1f;
+  --shadow-sm: 0 8px 24px #8a4f4c0f;
+  --shadow-md: 0 16px 48px -8px #8a4f4c24;
+  /* the one dark, dramatic surface: the wax-seal envelope */
+  --maroon: #5e1f25; --maroon-deep: #431319; --maroon-light: #7a2c33;
+  --wax: #f4ead8; --wax-shadow: #c9b48f;
 
-  /* ---- extra wood shades for depth (derived) ---- */
-  --wood-lt:#6b2230; --wood-mid:#511723; --wood-deep:#3c0e17;
-  --brass:#d3ab53; --brass-lt:#f8e3a0; --brass-dk:#855c1d;
-  --iron:#2c2c2e; --iron-lt:#454548;
+  /* fonts */
+  --font-display: "Distrela", "Great Vibes", "Italianno", cursive;
+  --font-body: "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Tenor Sans", sans-serif;
+  --font-script: "Italianno", cursive;
+  --font-deva: "Tiro Devanagari Sanskrit", "Cormorant Garamond", serif;
+  --stable-vh: 100svh;
 
-  /* ---- type ---- */
-  --font-display:"Cormorant Garamond", serif;
-  --font-deva:"Tiro Devanagari Sanskrit", serif;
-  --font-script:"Tangerine", cursive;
+  /* 4/8pt spacing rhythm */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px;
 
-  /* ---- wood grain texture: SVG fractal-noise, vertical streaks (real plank grain) ---- */
-  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='460'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.16 0.012' numOctaves='4' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.04 0 0 0 0 0.015 0 0 0 0 0.02 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");
+  /* radius */
+  --r-sm: 8px; --r-md: 14px; --r-lg: 22px; --r-pill: 999px;
 
-  /* one brass dome stud, used tiled along stiles & rails */
-  --stud:radial-gradient(circle at 50% 38%, var(--brass-lt) 0 16%, var(--brass) 26%, var(--brass-dk) 46%, rgba(0,0,0,.4) 58%, transparent 64%);
+  /* layered z-index scale */
+  --z-base: 0; --z-petals: 5; --z-content: 10; --z-nav: 40; --z-toast: 100;
+  --z-panel: 900; --z-envelope: 1000;
+
+  /* motion */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
 }
