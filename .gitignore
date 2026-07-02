@@ -1,10 +1,51 @@
+# Dependencies
 node_modules
+.pnp
+.pnp.js
+
+# Build output
 dist
 dist-ssr
+build
+
+# Vite / local caches
 *.local
-.vercel
-.DS_Store
-*.log
+.vite
+.cache
+
+# Environment variables
 .env
 .env.*
 !.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test / coverage
+coverage
+.nyc_output
+
+# Deployment
+.vercel
+.netlify
+
+# Editors / IDEs
+.vs/
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
