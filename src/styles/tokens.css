@@ -1,22 +1,39 @@
-/* Design tokens — from the Invifest reference :root (used verbatim), plus a
-   spacing + z-index scale (ui-ux-pro-max: 4/8pt rhythm, layered z-index). */
+/* Design tokens — palette extracted from the couple's Canva invitation films
+   ("Ubtan & Utsav" / "Mehndi"): warm ivory paper, marigold gold, rani pink,
+   blush pink and foliage green, with Mughal/Pichwai ornament accents.
+   Plus a spacing + z-index scale (ui-ux-pro-max: 4/8pt rhythm, layered z-index). */
 :root {
-  /* base */
-  --cream: #fdfbf7; --cream-2: #faf5f0; --cream-3: #f2eae1; --white: #fff;
-  /* dusty rose / sage family (primary) */
-  --sage-pale: #fff9f8; --sage-light: #f7dcda; --sage: #e2b4b1;
-  --sage-border: #eac9c7; --sage-dark: #ba7a76; --sage-deep: #8a4f4c;
-  /* gold accent */
-  --gold: #d4af37; --gold-light: #e8ce73; --gold-pale: #f7efc8;
+  /* base — warm ivory paper */
+  --cream: #fdf9ef; --cream-2: #faf2e0; --cream-3: #f3e7cd; --white: #fff;
+
+  /* marigold gold family (primary) */
+  --gold-wash: #fffaf0;      /* palest gold tint (section washes) */
+  --gold-soft: #f6e7bd;      /* light gold surface (icon chips) */
+  --gold-mid: #e3bc5f;       /* soft gold (ornament) */
+  --gold-border: #e9d5a4;    /* hairline gold borders */
+  --gold-strong: #96690f;    /* small-caps labels — 4.5:1 on cream */
+  --gold-deep: #7a5410;      /* headings / links — 7:1 on cream */
+  --gold: #d9a02b;           /* the marigold itself (decor, dividers) */
+  --gold-light: #efc55e; --gold-pale: #faefd2;
+
+  /* rani + blush pink accents (from the Canva palette swatches) */
+  --rani: #d63775; --rani-deep: #a4275a; --rani-text: #b02a60;
+  --blush: #f4a9be; --blush-pale: #fbe9ef;
+
+  /* foliage green (vines, palms) */
+  --leaf: #7e9257; --leaf-deep: #55673a; --leaf-pale: #eef2e3;
+
   /* type */
-  --text-dark: #2c2a29; --text-mid: #5a5552; --text-light: #8c8480; --border: #f0e5db;
-  /* shadows */
-  --shadow: 0 24px 64px -12px #8a4f4c1f;
-  --shadow-sm: 0 8px 24px #8a4f4c0f;
-  --shadow-md: 0 16px 48px -8px #8a4f4c24;
-  /* the one dark, dramatic surface: the wax-seal envelope */
-  --maroon: #5e1f25; --maroon-deep: #431319; --maroon-light: #7a2c33;
-  --wax: #f4ead8; --wax-shadow: #c9b48f;
+  --text-dark: #33291a; --text-mid: #5f5443; --text-light: #8d8271; --border: #efe3cd;
+
+  /* shadows — warm golden-brown */
+  --shadow: 0 24px 64px -12px #7a54101f;
+  --shadow-sm: 0 8px 24px #7a54100f;
+  --shadow-md: 0 16px 48px -8px #7a541024;
+
+  /* the one dark, dramatic surface: the wax-seal envelope (deep rani) */
+  --maroon: #7c1f47; --maroon-deep: #55112f; --maroon-light: #9b2e5c;
+  --wax: #f7ecd7; --wax-shadow: #d3bc90;
 
   /* fonts */
   --font-display: "Distrela", "Great Vibes", "Italianno", cursive;
@@ -41,4 +58,9 @@
   /* motion */
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* legacy aliases (pre-retheme names still used in a few spots) */
+  --sage-pale: var(--gold-wash); --sage-light: var(--gold-soft);
+  --sage: var(--gold-mid); --sage-border: var(--gold-border);
+  --sage-dark: var(--gold-strong); --sage-deep: var(--gold-deep);
 }

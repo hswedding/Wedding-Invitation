@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { useReducedMotion } from '../hooks/useReducedMotion.js';
 
-/* Soft rose-petal rain on a fixed full-screen canvas. Capped particle count for
-   mobile; paused entirely when the user prefers reduced motion. */
-const COLORS = ['#f7dcda', '#e2b4b1', '#eac9c7', '#f7efc8'];
+/* Soft marigold-and-blush petal rain on a fixed full-screen canvas. Capped
+   particle count for mobile; paused entirely when reduced motion is on. */
+const COLORS = ['#f5c04e', '#efc55e', '#f4a9be', '#e3bc5f', '#faefd2'];
 
 export default function Petals({ active = true }) {
   const ref = useRef(null);

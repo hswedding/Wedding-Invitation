@@ -6,10 +6,10 @@
 
 /* The couple ---------------------------------------------------------------- */
 export const couple = {
-  groom: { first: 'Aarav', full: 'Aarav Khanna' },     // ⟵ EDIT
-  bride: { first: 'Diya', full: 'Diya Malhotra' },      // ⟵ EDIT
-  monogram: 'A&D',                                       // ⟵ EDIT (wax-seal initials)
-  hashtag: '#AaravWedsDiya',                             // ⟵ EDIT
+  groom: { first: 'Hemant', full: 'Hemant' },
+  bride: { first: 'Sukriti', full: 'Sukriti' },
+  monogram: 'H&S',
+  hashtag: '#HemantWedsSukriti',
 };
 
 /* The wedding moment (countdown + hero target). ISO local time. ------------- */
@@ -59,9 +59,9 @@ const defaultVenue = {
   mapUrl: 'https://maps.google.com/?q=Chandigarh',                  // ⟵ EDIT
 };
 const hotelRadius = {
-  name: 'Hotel Radius',
-  area: '',                                                          // ⟵ EDIT add city/area
-  mapUrl: 'https://maps.google.com/?q=Hotel+Radius',                 // ⟵ EDIT refine map link
+  name: 'Rooftop, Hotel Radius',
+  area: 'SCO 205-209, Airport Rd, TDI City, Sector 117, Mohali, Punjab 160055',
+  mapUrl: 'https://maps.google.com/?q=Hotel+Radius+TDI+City+Sector+117+Mohali',
 };
 const dullatResort = {
   name: 'Dullat Resort',
@@ -92,6 +92,7 @@ export const events = [
     blurb: 'Henna, music and laughter as the groom’s side gathers.',
     dressCode: { label: 'Fresh greens', color: '#7faa6a' },
     venue: defaultVenue,
+    video: '/videos/mehndi.mp4',
   },
   {
     id: 'mehndi-bride', order: 3, side: 'bride',
@@ -122,12 +123,13 @@ export const events = [
   },
   {
     id: 'haldi', order: 6, side: 'together',
-    name: 'Haldi', nameDeva: 'हल्दी',
-    dateISO: '2026-11-23', dateLabel: '23 Nov', dayLabel: 'Monday',
-    timeLabel: 'Morning', icon: 'haldi',
+    name: 'Ubtan & Utsav', nameDeva: 'उत्सव',
+    dateISO: '2026-11-23', dateLabel: '23 Nov 2026', dayLabel: 'Monday',
+    timeLabel: '9 a.m. onwards', icon: 'haldi',
     blurb: 'Turmeric, sunshine and joy for the bride and groom.',
     dressCode: { label: 'Sunny yellow', color: '#f1c40f' },
     venue: hotelRadius,
+    video: '/videos/haldi.mp4',
   },
   {
     id: 'chooda', order: 7, side: 'bride',

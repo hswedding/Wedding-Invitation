@@ -9,9 +9,12 @@ const SIDE_LABEL = {
 };
 
 /* Scene 4 — The Celebrations. Only the functions selected for this guest are
-   rendered; each card carries a dress-code colour dot and a side badge. */
-export default function Events({ events }) {
+   rendered; each card carries a dress-code colour dot and a side badge.
+   Functions that have their own invitation film are shown as EventFilms
+   scenes instead of cards. */
+export default function Events({ events: allEvents }) {
   const root = useRef(null);
+  const events = allEvents.filter((e) => !e.video);
 
   useGSAP(() => {
     gsap.from('.event-card', {
