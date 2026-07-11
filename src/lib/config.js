@@ -11,8 +11,12 @@
  *    host                                   (presence opens control panel)
  *
  *  A bare URL with no params = the full joint invitation, everything on.
+ *
+ *  Opaque variant links: the same query string, base64url-encoded into the
+ *  path (/{slug}). parseInvitation decodes the slug first, then overlays any
+ *  explicit query params — so /{slug}?host opens the builder on that variant.
  * ========================================================================== */
-import { events, presets } from '../data.js';
+import { couple, events, presets } from '../data.js';
 
 const EVENT_IDS = events.map((e) => e.id);
 const SIDES = ['bride', 'groom', 'joint'];
@@ -30,8 +34,31 @@ function sanitiseIds(ids) {
   return EVENT_IDS.filter((id) => set.has(id));
 }
 
-export function parseInvitation(search = '') {
-  const p = new URLSearchParams(search);
+/** Couple names in hosting-side order: bride variants put the bride first. */
+export function orderedCouple(side) {
+  return side === 'bride' ? [couple.bride, couple.groom] : [couple.groom, couple.bride];
+}
+
+/** base64url-encode a control-panel state into an opaque link slug. */
+export function encodeSlug(state) {
+  const q = buildQuery(state).replace(/^\?/, '');
+  return btoa(q).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+/** Decode a path slug back to a query string. Unknown junk → '' (default invite). */
+export function decodeSlug(slug) {
+  try {
+    return atob(slug.replace(/-/g, '+').replace(/_/g, '/'));
+  } catch {
+    return '';
+  }
+}
+
+export function parseInvitation(search = '', pathname = '') {
+  // path slug first, explicit query params override it
+  const slug = pathname.replace(/^\/+|\/+$/g, '');
+  const p = new URLSearchParams(slug ? decodeSlug(slug) : '');
+  for (const [k, v] of new URLSearchParams(search)) p.set(k, v);
 
   const side = SIDES.includes(p.get('side')) ? p.get('side') : 'joint';
 
@@ -98,10 +125,10 @@ export function buildQuery(state) {
   return qs ? `?${qs}` : '';
 }
 
-/** Absolute shareable URL for a guest. */
+/** Absolute shareable URL for a guest — an opaque /{slug} link. */
 export function buildShareUrl(baseUrl, state) {
   const base = (baseUrl || '').replace(/[?#].*$/, '').replace(/\/$/, '');
-  return `${base}/${buildQuery(state)}`.replace(/\/\?/, '/?').replace(/\/$/, '/');
+  return `${base}/${encodeSlug(state)}`;
 }
 
 /** wa.me link to forward the invitation to a guest. */

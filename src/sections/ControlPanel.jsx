@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
-import { events, presets, toggleableSections, couple, config } from '../data.js';
+import { events, presets, toggleableSections, config } from '../data.js';
 import {
-  parseInvitation, buildQuery, buildShareUrl, buildWhatsAppShare,
+  parseInvitation, buildQuery, buildShareUrl, buildWhatsAppShare, orderedCouple,
 } from '../lib/config.js';
 import { applyQuery } from '../hooks/useConfig.js';
 import Icon from '../components/Icons.jsx';
@@ -16,7 +16,10 @@ const SIDES = [
    side; it live-updates the page behind and builds a shareable link. Client-side
    only — obscure, not secured. */
 export default function ControlPanel() {
-  const init = useMemo(() => parseInvitation(window.location.search), []);
+  const init = useMemo(
+    () => parseInvitation(window.location.search, window.location.pathname),
+    []
+  );
   const [state, setState] = useState({
     side: init.side,
     guestName: init.guestName,
@@ -36,9 +39,9 @@ export default function ControlPanel() {
     applyQuery(`${q}${sep}host`);
   }, [state]);
 
-  const base = config.siteUrl || `${window.location.origin}${window.location.pathname}`;
+  const base = config.siteUrl || window.location.origin;
   const shareUrl = buildShareUrl(base, state);
-  const names = `${couple.groom.first} & ${couple.bride.first}`;
+  const names = orderedCouple(state.side).map((c) => c.first).join(' & ');
   const waHref = buildWhatsAppShare(shareUrl, state.guestName, names);
 
   const setSide = (side) => setState((s) => ({ ...s, side }));

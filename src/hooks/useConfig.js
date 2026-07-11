@@ -5,11 +5,14 @@ import { parseInvitation } from '../lib/config.js';
  *  control panel can live-preview by calling history.replaceState + dispatch. */
 export function useConfig() {
   const [config, setConfig] = useState(() =>
-    parseInvitation(typeof window !== 'undefined' ? window.location.search : '')
+    typeof window !== 'undefined'
+      ? parseInvitation(window.location.search, window.location.pathname)
+      : parseInvitation()
   );
 
   useEffect(() => {
-    const reread = () => setConfig(parseInvitation(window.location.search));
+    const reread = () =>
+      setConfig(parseInvitation(window.location.search, window.location.pathname));
     window.addEventListener('popstate', reread);
     window.addEventListener('urlchange', reread);
     return () => {
@@ -21,9 +24,10 @@ export function useConfig() {
   return config;
 }
 
-/** Apply a query string to the address bar without reload and notify listeners. */
+/** Apply a query string to the address bar without reload and notify listeners.
+ *  Always writes to the root path so the query fully replaces any /{slug}. */
 export function applyQuery(query) {
-  const url = `${window.location.pathname}${query}${window.location.hash}`;
+  const url = `/${query}${window.location.hash}`;
   window.history.replaceState({}, '', url);
   window.dispatchEvent(new Event('urlchange'));
 }

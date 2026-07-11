@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { gsap, useGSAP } from '../lib/gsap.js';
-import { couple, wedding, families } from '../data.js';
+import { wedding, families } from '../data.js';
+import { orderedCouple } from '../lib/config.js';
 import ScratchCard from '../components/ScratchCard.jsx';
 import Icon from '../components/Icons.jsx';
 
@@ -9,6 +10,7 @@ import Icon from '../components/Icons.jsx';
 export default function Hero({ invite }) {
   const root = useRef(null);
   const family = families[invite.side] || families.joint;
+  const [first, second] = orderedCouple(invite.side);
 
   useGSAP(() => {
     gsap.from('.hero__reveal', {
@@ -26,9 +28,9 @@ export default function Hero({ invite }) {
         )}
 
         <h1 className="hero__names hero__reveal">
-          <span>{couple.groom.first}</span>
+          <span>{first.first}</span>
           <span className="hero__amp">&amp;</span>
-          <span>{couple.bride.first}</span>
+          <span>{second.first}</span>
         </h1>
 
         <p className="hero__line hero__reveal">{family.inviteLine}</p>

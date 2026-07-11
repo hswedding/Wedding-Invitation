@@ -28,26 +28,26 @@ export const families = {
     inviteLine: 'request the pleasure of your company at the wedding of their daughter',
     sign: 'With love, the Malhotra Family',                         // ⟵ EDIT
     contacts: [
-      { name: 'Rohan Malhotra', phone: '+919876500001' },          // ⟵ EDIT
-      { name: 'Priya Malhotra', phone: '+919876500002' },          // ⟵ EDIT
+      { name: 'Manish Malhotra', phone: '+919876500001' },          // ⟵ EDIT
+      { name: 'Ashu Malhotra', phone: '+919876500002' },          // ⟵ EDIT
     ],
   },
   groom: {
-    hosts: 'Mr. & Mrs. Khanna',                                     // ⟵ EDIT
+    hosts: 'Mr. & Mrs. Bahl',                                     // ⟵ EDIT
     inviteLine: 'request the pleasure of your company at the wedding of their son',
-    sign: 'With love, the Khanna Family',                           // ⟵ EDIT
+    sign: 'With love, the Bahl Family',                           // ⟵ EDIT
     contacts: [
-      { name: 'Vikram Khanna', phone: '+919876500003' },           // ⟵ EDIT
-      { name: 'Anjali Khanna', phone: '+919876500004' },           // ⟵ EDIT
+      { name: 'Jatinder Bahl', phone: '+919876500003' },           // ⟵ EDIT
+      { name: 'Neeru Bahl', phone: '+919876500004' },           // ⟵ EDIT
     ],
   },
   joint: {
-    hosts: 'The Khanna & Malhotra Families',                        // ⟵ EDIT
+    hosts: 'The Bahl & Malhotra Families',                        // ⟵ EDIT
     inviteLine: 'joyfully invite you to celebrate the wedding of',
-    sign: 'With love, the Khanna & Malhotra Families',
+    sign: 'With love, the Bahl & Malhotra Families',
     contacts: [
-      { name: 'Rohan Malhotra', phone: '+919876500001' },
-      { name: 'Vikram Khanna', phone: '+919876500003' },
+      { name: 'Manish Malhotra', phone: '+919876500001' },
+      { name: 'Jatinder Bahl', phone: '+919876500003' },
     ],
   },
 };

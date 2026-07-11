@@ -1,11 +1,11 @@
 import { couple, families } from '../data.js';
-import { buildWhatsAppShare } from '../lib/config.js';
+import { buildWhatsAppShare, orderedCouple } from '../lib/config.js';
 import Icon from '../components/Icons.jsx';
 
 /* Footer — gratitude, family contacts, hashtag, and a WhatsApp share CTA. */
 export default function Footer({ invite }) {
   const family = families[invite.side] || families.joint;
-  const names = `${couple.groom.first} & ${couple.bride.first}`;
+  const names = orderedCouple(invite.side).map((c) => c.first).join(' & ');
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
   const shareHref = buildWhatsAppShare(shareUrl, invite.guestName, names);
 

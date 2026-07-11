@@ -41,10 +41,24 @@ Open the **host control panel** at:
 http://localhost:5173/?host        (or  https://your-site/?host  once deployed)
 ```
 
+Bride- and groom-side admin shortcuts (panel opens pre-loaded with that side's
+functions and name order):
+
+```
+/?side=bride&host          /?side=groom&host
+```
+
 There you pick the guest's functions (checkboxes or a quick preset), the hosting
 side, optional sections, and an optional guest name. The page previews live, and
 you get a **shareable link** + a **Share on WhatsApp** button. Send each guest
 their own link.
+
+The shareable link is an opaque token — `https://your-site/c2lkZT1icmlkZQ` —
+which is just the query string below, base64url-encoded into the path (no
+backend or storage; the link *is* the config). Append `?host` to any such link
+to reopen the builder on that variant. Unrecognisable tokens fall back to the
+full joint invitation. Bride variants show **Sukriti & Hemant**; groom and
+joint variants show **Hemant & Sukriti**.
 
 > The `?host` panel is hidden, not secured — anyone with the URL (or who edits
 > the query string) can change the view. That's fine for a wedding invite; don't
