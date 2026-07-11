@@ -77,12 +77,13 @@ const dullatResort = {
 export const events = [
   {
     id: 'kirtan', order: 1, side: 'bride',
-    name: 'Kirtan', nameDeva: 'कीर्तन',
+    name: 'Sai Sandhya', nameDeva: 'साईं संध्या',
     dateISO: '2026-11-14', dateLabel: '14–15 Nov', dayLabel: 'Sat–Sun',
     timeLabel: 'Evening', icon: 'kirtan',
     blurb: 'An evening of devotional song and blessings to begin the celebrations.',
     dressCode: { label: 'Soft ivory & pastels', color: '#f4ead8' },
     venue: defaultVenue,
+    video: '/videos/Sai Sandhya (Sukriti).mp4',
   },
   {
     id: 'mehndi-groom', order: 2, side: 'groom',
@@ -92,7 +93,7 @@ export const events = [
     blurb: 'Henna, music and laughter as the groom’s side gathers.',
     dressCode: { label: 'Fresh greens', color: '#7faa6a' },
     venue: defaultVenue,
-    video: '/videos/mehndi.mp4',
+    video: '/videos/Mehndi (Hemant).mp4',
   },
   {
     id: 'mehndi-bride', order: 3, side: 'bride',
@@ -102,6 +103,7 @@ export const events = [
     blurb: 'Intricate henna and festive cheer for the bride and her guests.',
     dressCode: { label: 'Marigold & green', color: '#d9b441' },
     venue: defaultVenue,
+    video: '/videos/Mehndi (Sukriti).mp4',
   },
   {
     id: 'sundarkand', order: 4, side: 'groom',
@@ -111,6 +113,7 @@ export const events = [
     blurb: 'A morning recitation seeking blessings for the union.',
     dressCode: { label: 'Saffron & white', color: '#e08a3c' },
     venue: defaultVenue,
+    video: '/videos/Sundarkand Path (Hemant).mp4',
   },
   {
     id: 'shagun-sangeet', order: 5, side: 'together',
@@ -120,6 +123,7 @@ export const events = [
     blurb: 'Both families come together for blessings, dance and music.',
     dressCode: { label: 'Jewel tones', color: '#3b5ca8' },
     venue: hotelRadius,
+    video: '/videos/HS Shagun.mp4',
   },
   {
     id: 'haldi', order: 6, side: 'together',
@@ -129,7 +133,7 @@ export const events = [
     blurb: 'Turmeric, sunshine and joy for the bride and groom.',
     dressCode: { label: 'Sunny yellow', color: '#f1c40f' },
     venue: hotelRadius,
-    video: '/videos/haldi.mp4',
+    video: '/videos/HS Haldi.mp4',
   },
   {
     id: 'chooda', order: 7, side: 'bride',
@@ -179,21 +183,9 @@ export const presets = {
 /* Toggleable scenes (Envelope / Hero / Footer are always shown) ------------- */
 export const toggleableSections = [
   { id: 'countdown', label: 'Countdown' },
-  { id: 'story', label: 'Our Story' },
   { id: 'venue', label: 'Venue & Travel' },
   { id: 'rsvp', label: 'RSVP' },
 ];
-
-/* Our Story timeline -------------------------------------------------------- */
-export const story = {
-  title: 'Our Story',
-  intro: 'Two families, one celebration — here is how it all began.',
-  beats: [
-    { year: '2019', heading: 'We Met', text: 'A chance introduction that felt like fate.' },         // ⟵ EDIT
-    { year: '2022', heading: 'The Question', text: 'A quiet evening, a ring, and an easy “yes”.' },    // ⟵ EDIT
-    { year: '2026', heading: 'Forever', text: 'And now, we’d love for you to be there.' },             // ⟵ EDIT
-  ],
-};
 
 /* Global config ------------------------------------------------------------- */
 export const config = {

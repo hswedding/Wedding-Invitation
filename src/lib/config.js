@@ -7,7 +7,7 @@
  *    fns       csv of event ids             (which functions to show)
  *    preset    all | wedding | shagun-wedding | bride | groom
  *    to        guest name (personalised greeting)
- *    countdown/story/venue/rsvp = 0         (hide that section)
+ *    countdown/venue/rsvp = 0               (hide that section)
  *    host                                   (presence opens control panel)
  *
  *  A bare URL with no params = the full joint invitation, everything on.
@@ -16,7 +16,7 @@ import { events, presets } from '../data.js';
 
 const EVENT_IDS = events.map((e) => e.id);
 const SIDES = ['bride', 'groom', 'joint'];
-export const SECTION_IDS = ['countdown', 'story', 'venue', 'rsvp'];
+export const SECTION_IDS = ['countdown', 'venue', 'rsvp'];
 
 function sideDefaultIds(side) {
   if (side === 'bride') return presets.bride.ids;
@@ -49,7 +49,6 @@ export function parseInvitation(search = '') {
 
   const sections = {
     countdown: p.get('countdown') !== '0',
-    story: p.get('story') !== '0',
     venue: p.get('venue') !== '0',
     rsvp: p.get('rsvp') !== '0',
   };
@@ -121,6 +120,7 @@ export function buildRsvpWhatsApp(number, answers) {
     `Name: ${answers.name || '—'}`,
     `Phone: ${answers.phone || '—'}`,
     `Guests: ${answers.party || '1'}`,
+    `Arrival: ${answers.arrival || '—'}`,
   ];
   const text = encodeURIComponent(lines.join('\n'));
   return `https://wa.me/${number}?text=${text}`;

@@ -11,7 +11,7 @@ import Icon from '../components/Icons.jsx';
 export default function Rsvp() {
   const root = useRef(null);
   const [form, setForm] = useState({
-    name: '', phone: '', party: 1,
+    name: '', phone: '', party: 1, arrival: '',
   });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | success
@@ -94,6 +94,11 @@ export default function Rsvp() {
             <Field id="party" label="Number of guests">
               <input id="party" className="field__input" type="number" inputMode="numeric"
                 min="1" max="20" value={form.party} onChange={set('party')} />
+            </Field>
+
+            <Field id="arrival" label="Date of arrival">
+              <input id="arrival" className="field__input" type="date"
+                value={form.arrival} onChange={set('arrival')} />
             </Field>
 
             <button type="submit" className="btn btn--primary rsvp__submit"

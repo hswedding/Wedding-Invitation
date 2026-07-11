@@ -8,7 +8,6 @@ import { useReducedMotion } from './hooks/useReducedMotion.js';
 import Envelope from './sections/Envelope.jsx';
 import Hero from './sections/Hero.jsx';
 import Countdown from './sections/Countdown.jsx';
-import Story from './sections/Story.jsx';
 import EventFilms from './sections/EventFilms.jsx';
 import Venue from './sections/Venue.jsx';
 import Rsvp from './sections/Rsvp.jsx';
@@ -54,10 +53,9 @@ export default function App() {
 
       {!opened && <Envelope onOpen={() => setOpened(true)} />}
 
-      <main className="page" aria-hidden={!opened}>
+      <main className="page" id="main-content" aria-hidden={!opened}>
         <Hero invite={invite} />
         {invite.sections.countdown && <Countdown />}
-        {invite.sections.story && <Story />}
         <EventFilms events={events} />
         {invite.sections.venue && <Venue events={events} />}
         {invite.sections.rsvp && <Rsvp />}

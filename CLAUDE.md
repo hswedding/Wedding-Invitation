@@ -29,7 +29,7 @@ Query params (see the header comment in `src/lib/config.js` and README for the f
 
 **Shared GSAP instance.** Always import gsap/ScrollTrigger/useGSAP from `src/lib/gsap.js` (plugins are registered there once) — never import from `gsap` directly in components.
 
-**Directory map:** `src/sections/` = full-width page scenes (Hero, Countdown, Story, EventFilms, Venue, Rsvp, Footer, Envelope, ControlPanel). `src/components/` = reusable pieces (Petals, ScratchCard, Icons). `src/styles/` = plain CSS; `base.css` `@import`s `tokens.css` (design tokens/CSS variables) and `fonts.css`, and `main.jsx` also imports `components.css`. Icons are keyed by string in `Icons.jsx` and referenced by name from event data.
+**Directory map:** `src/sections/` = full-width page scenes (Hero, Countdown, EventFilms, Venue, Rsvp, Footer, Envelope, ControlPanel). `src/components/` = reusable pieces (Petals, ScratchCard, Icons). `src/styles/` = plain CSS; `base.css` `@import`s `tokens.css` (design tokens/CSS variables) and `fonts.css`, and `main.jsx` also imports `components.css`. Icons are keyed by string in `Icons.jsx` and referenced by name from event data.
 
 ## External integrations (no backend)
 

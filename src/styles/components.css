@@ -119,26 +119,6 @@
 }
 .countdown__sub { font-family: var(--font-body); font-style: italic; color: var(--text-mid); margin-top: var(--sp-4); }
 
-/* ---- Story (scene 3) ------------------------------------------------------ */
-.story { text-align: center; }
-.story__intro { color: var(--text-mid); max-width: 36ch; margin: 0 auto var(--sp-6); }
-.story__line { position: relative; text-align: left; max-width: 460px; margin: 0 auto; padding-left: 8px; }
-.story__progress {
-  position: absolute; left: 13px; top: 8px; bottom: 8px; width: 2px;
-  background: linear-gradient(var(--gold), var(--rani)); border-radius: 2px;
-}
-.story__beat { position: relative; padding: 0 0 var(--sp-6) 44px; }
-.story__beat:last-child { padding-bottom: 0; }
-.story__dot {
-  position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%;
-  display: grid; place-items: center; color: var(--white);
-  background: linear-gradient(135deg, var(--rani), var(--rani-deep));
-  box-shadow: 0 0 0 5px var(--cream);
-}
-.story__year { font-family: var(--font-sans); letter-spacing: 0.2em; font-size: 0.7rem; color: var(--gold); text-transform: uppercase; }
-.story__heading { margin: 2px 0 4px; color: var(--sage-deep); }
-.story__text { color: var(--text-mid); margin: 0; }
-
 /* ---- Invitation films (Haldi · Mehndi) ------------------------------------ */
 .film {
   text-align: center; overflow: hidden;

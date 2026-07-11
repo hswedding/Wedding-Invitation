@@ -23,7 +23,6 @@ export default function ControlPanel() {
     eventIds: init.eventIds,
     sections: {
       countdown: init.sections.countdown,
-      story: init.sections.story,
       venue: init.sections.venue,
       rsvp: init.sections.rsvp,
     },
