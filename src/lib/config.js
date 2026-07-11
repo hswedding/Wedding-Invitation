@@ -8,7 +8,6 @@
  *    preset    all | wedding | shagun-wedding | bride | groom
  *    to        guest name (personalised greeting)
  *    countdown/story/venue/rsvp = 0         (hide that section)
- *    music     = 0                          (disable background music)
  *    host                                   (presence opens control panel)
  *
  *  A bare URL with no params = the full joint invitation, everything on.
@@ -59,7 +58,6 @@ export function parseInvitation(search = '') {
     side,
     eventIds,
     sections,
-    music: p.get('music') !== '0',
     guestName: (p.get('to') || '').trim(),
     isHost: p.has('host'),
   };
@@ -96,7 +94,6 @@ export function buildQuery(state) {
   for (const id of SECTION_IDS) {
     if (state.sections && state.sections[id] === false) p.set(id, '0');
   }
-  if (state.music === false) p.set('music', '0');
 
   const qs = p.toString();
   return qs ? `?${qs}` : '';
@@ -124,10 +121,7 @@ export function buildRsvpWhatsApp(number, answers) {
     `Name: ${answers.name || '—'}`,
     `Phone: ${answers.phone || '—'}`,
     `Guests: ${answers.party || '1'}`,
-    `Food: ${answers.food || '—'}`,
   ];
-  if (answers.song) lines.push(`Song request: ${answers.song}`);
-  if (answers.message) lines.push(`Message: ${answers.message}`);
   const text = encodeURIComponent(lines.join('\n'));
   return `https://wa.me/${number}?text=${text}`;
 }

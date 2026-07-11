@@ -15,7 +15,6 @@ import Rsvp from './sections/Rsvp.jsx';
 import Footer from './sections/Footer.jsx';
 import ControlPanel from './sections/ControlPanel.jsx';
 import Petals from './components/Petals.jsx';
-import MusicToggle from './components/MusicToggle.jsx';
 
 export default function App() {
   const invite = useConfig();
@@ -65,7 +64,6 @@ export default function App() {
         <Footer invite={invite} />
       </main>
 
-      {opened && <MusicToggle started={opened} enabled={invite.music} />}
       {invite.isHost && <ControlPanel />}
     </>
   );

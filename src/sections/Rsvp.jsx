@@ -2,9 +2,8 @@ import { useRef, useState } from 'react';
 import confetti from 'canvas-confetti';
 import PhoneInput from 'react-phone-number-input';
 import { gsap, useGSAP } from '../lib/gsap.js';
-import { config, foodPreferences } from '../data.js';
+import { config } from '../data.js';
 import { buildRsvpWhatsApp } from '../lib/config.js';
-import SongSearch from '../components/SongSearch.jsx';
 import Icon from '../components/Icons.jsx';
 
 /* Scene 6 — RSVP. Validates client-side, fires confetti + a sound, then opens a
@@ -12,7 +11,7 @@ import Icon from '../components/Icons.jsx';
 export default function Rsvp() {
   const root = useRef(null);
   const [form, setForm] = useState({
-    name: '', phone: '', party: 1, food: '', song: '', message: '',
+    name: '', phone: '', party: 1,
   });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | success
@@ -31,7 +30,6 @@ export default function Rsvp() {
     const e = {};
     if (!form.name.trim()) e.name = 'Please tell us your name.';
     if (!form.phone || form.phone.length < 8) e.phone = 'Add a valid phone number.';
-    if (!form.food) e.food = 'Pick a meal preference.';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -96,31 +94,6 @@ export default function Rsvp() {
             <Field id="party" label="Number of guests">
               <input id="party" className="field__input" type="number" inputMode="numeric"
                 min="1" max="20" value={form.party} onChange={set('party')} />
-            </Field>
-
-            <fieldset className={`field ${errors.food ? 'field--error' : ''}`}>
-              <legend className="field__label">Meal preference <span aria-hidden>*</span></legend>
-              <div className="rsvp__chips" role="radiogroup" aria-label="Meal preference">
-                {foodPreferences.map((f) => (
-                  <label key={f} className={`chip ${form.food === f ? 'chip--on' : ''}`}>
-                    <input type="radio" name="food" value={f}
-                      checked={form.food === f} onChange={set('food')} />
-                    {f}
-                  </label>
-                ))}
-              </div>
-              {errors.food && <p className="field__err" role="alert">{errors.food}</p>}
-            </fieldset>
-
-            {config.enableSongRequest && (
-              <Field id="song" label="A song for the dance floor">
-                <SongSearch value={form.song} onChange={set('song')} />
-              </Field>
-            )}
-
-            <Field id="message" label="Marriage advice / a message for us">
-              <textarea id="message" className="field__input" rows="3"
-                value={form.message} onChange={set('message')} />
             </Field>
 
             <button type="submit" className="btn btn--primary rsvp__submit"

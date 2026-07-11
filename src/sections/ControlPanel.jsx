@@ -27,7 +27,6 @@ export default function ControlPanel() {
       venue: init.sections.venue,
       rsvp: init.sections.rsvp,
     },
-    music: init.music,
   });
   const [copied, setCopied] = useState(false);
 
@@ -156,13 +155,6 @@ export default function ControlPanel() {
                 </label>
               </li>
             ))}
-            <li>
-              <label className={state.music ? 'is-on' : ''}>
-                <input type="checkbox" checked={state.music}
-                  onChange={() => setState((s) => ({ ...s, music: !s.music }))} />
-                <span className="panel__check-name">Music</span>
-              </label>
-            </li>
           </ul>
         </div>
 

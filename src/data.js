@@ -195,20 +195,13 @@ export const story = {
   ],
 };
 
-/* Food preferences offered in the RSVP -------------------------------------- */
-export const foodPreferences = ['Vegetarian', 'Jain', 'Gluten-Free', 'No preference'];
-
 /* Global config ------------------------------------------------------------- */
 export const config = {
   // WhatsApp number that RSVP submissions are sent to (digits + country code,
   // no + or spaces). Used for both RSVP delivery and the footer share CTA. ⟵ EDIT
   rsvpWhatsApp: '919876500001',
-  // Background music. Drop a licensed track at public/assets/bg-music.mp3. ⟵ EDIT
-  music: { src: '/assets/bg-music.mp3', title: 'Wedding theme' },
   // RSVP success sound effect (optional). public/assets/yay.mp3
   yaySfx: '/assets/yay.mp3',
-  // Enable the iTunes "song for the dance floor" search field in the RSVP.
-  enableSongRequest: true,
   // Default site URL used by the control panel to build share links.
   // Leave '' to auto-detect from the browser. ⟵ EDIT once deployed.
   siteUrl: '',
