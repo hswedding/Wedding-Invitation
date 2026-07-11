@@ -47,8 +47,7 @@
     radial-gradient(circle 60px at 88% 12%, #f4a9be2e, transparent 70%),
     radial-gradient(circle 70px at 84% 76%, #efc55e21, transparent 70%),
     radial-gradient(circle 40px at 8% 70%, #f4a9be1f, transparent 70%),
-    radial-gradient(140% 80% at 50% -10%, var(--gold-wash), transparent 60%),
-    var(--cream);
+    radial-gradient(140% 80% at 50% -10%, var(--gold-wash), transparent 60%);
 }
 .hero__inner { display: grid; justify-items: center; gap: var(--sp-4); text-align: center; }
 .hero__invocation {
@@ -144,18 +143,6 @@
   display: block; width: 100%; aspect-ratio: 9 / 16;
   object-fit: cover; border-radius: 19px; background: var(--cream-3);
 }
-.film__sound {
-  position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
-  display: inline-flex; align-items: center; gap: 8px;
-  min-height: 44px; padding: 0 18px; border-radius: var(--r-pill);
-  border: 1px solid #ffffff55; color: var(--white);
-  background: #00000073; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.05em;
-  transition: transform 0.18s var(--ease-soft), background 0.18s;
-  touch-action: manipulation;
-}
-.film__sound:hover { background: #000000a0; }
-.film__sound:active { transform: translateX(-50%) scale(0.95); }
 .film__meta {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   margin: var(--sp-5) auto 0; color: var(--gold-strong);
@@ -236,7 +223,6 @@ textarea.field__input { resize: vertical; line-height: 1.5; }
 /* ---- Footer --------------------------------------------------------------- */
 .footer {
   text-align: center; color: var(--text-dark);
-  background: linear-gradient(var(--cream-2), var(--cream-3));
   padding-bottom: max(var(--sp-8), env(safe-area-inset-bottom));
 }
 .footer__crest { margin: 0 auto var(--sp-3); color: var(--gold); }

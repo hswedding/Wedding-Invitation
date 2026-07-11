@@ -14,6 +14,7 @@ import Rsvp from './sections/Rsvp.jsx';
 import Footer from './sections/Footer.jsx';
 import ControlPanel from './sections/ControlPanel.jsx';
 import Petals from './components/Petals.jsx';
+import Icon from './components/Icons.jsx';
 
 export default function App() {
   const invite = useConfig();
@@ -21,6 +22,8 @@ export default function App() {
   const reduced = useReducedMotion();
   // Host preview skips the envelope so the page is visible behind the panel.
   const [opened, setOpened] = useState(invite.isHost);
+  // App-wide sound for the invitation films (videos autoplay muted).
+  const [soundOn, setSoundOn] = useState(false);
 
   // Lock scroll behind the envelope; refresh scroll positions once revealed.
   useEffect(() => {
@@ -56,12 +59,23 @@ export default function App() {
       <main className="page" id="main-content" aria-hidden={!opened}>
         <Hero invite={invite} />
         {invite.sections.countdown && <Countdown />}
-        <EventFilms events={events} />
+        <EventFilms events={events} soundOn={soundOn} />
         {invite.sections.venue && <Venue events={events} />}
         {invite.sections.rsvp && <Rsvp />}
         <Footer invite={invite} />
       </main>
 
+      {opened && (
+        <button
+          type="button"
+          className="music-toggle"
+          onClick={() => setSoundOn((s) => !s)}
+          aria-label={soundOn ? 'Mute sound' : 'Unmute sound'}
+          aria-pressed={soundOn}
+        >
+          <Icon name={soundOn ? 'speaker' : 'speakerOff'} size={20} />
+        </button>
+      )}
       {invite.isHost && <ControlPanel />}
     </>
   );

@@ -64,7 +64,7 @@ const groomHome = {
   mapUrl: 'https://maps.app.goo.gl/VVrJ7hTVdEWrSkzs9',
 };
 const hotelRadius = {
-  name: 'Rooftop, Hotel Radius',
+  name: 'Hotel Radius',
   area: 'SCO 205-209, Airport Rd, TDI City, Sector 117, Mohali, Punjab 160055',
   mapUrl: 'https://maps.google.com/?q=Hotel+Radius+TDI+City+Sector+117+Mohali',
 };

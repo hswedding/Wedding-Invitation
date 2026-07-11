@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap, useGSAP } from '../lib/gsap.js';
 import { useReducedMotion } from '../hooks/useReducedMotion.js';
 import Icon from '../components/Icons.jsx';
@@ -6,13 +6,18 @@ import Icon from '../components/Icons.jsx';
 /* Scene 4b — Invitation films. Each function that carries a `video` is shown
    as its own cinematic scene: the Canva invitation film in an ornate gold
    frame that starts playing the moment it scrolls into view and pauses when
-   it leaves. Muted by default (autoplay policy) with a tap-to-unmute pill. */
+   it leaves. Muted by default (autoplay policy); the app-wide sound toggle
+   in App.jsx unmutes every film at once. */
 
-function Film({ event }) {
+function Film({ event, soundOn }) {
   const wrap = useRef(null);
   const videoRef = useRef(null);
   const reduced = useReducedMotion();
-  const [muted, setMuted] = useState(true);
+
+  // React doesn't update the muted attribute after mount — set it directly.
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.muted = !soundOn;
+  }, [soundOn]);
 
   // Autoplay / pause driven by visibility.
   useEffect(() => {
@@ -43,13 +48,6 @@ function Film({ event }) {
     });
   }, { scope: wrap });
 
-  const toggleMute = () => {
-    const video = videoRef.current;
-    video.muted = !video.muted;
-    setMuted(video.muted);
-    if (!video.muted) video.play().catch(() => {});
-  };
-
   return (
     <section className="film section" id={`film-${event.id}`} ref={wrap}>
       <div className="section__inner film__inner">
@@ -61,25 +59,13 @@ function Film({ event }) {
             ref={videoRef}
             className="film__video"
             src={event.video}
-            muted={muted}
+            muted
             loop
             playsInline
             preload="metadata"
             controls={reduced}
             aria-label={`${event.name} invitation film`}
           />
-          {!reduced && (
-            <button
-              type="button"
-              className="film__sound"
-              onClick={toggleMute}
-              aria-label={muted ? 'Unmute film' : 'Mute film'}
-              aria-pressed={!muted}
-            >
-              <Icon name={muted ? 'speakerOff' : 'speaker'} size={18} />
-              <span>{muted ? 'Tap for sound' : 'Sound on'}</span>
-            </button>
-          )}
         </div>
 
         <p className="film__meta film__reveal">
@@ -93,8 +79,8 @@ function Film({ event }) {
   );
 }
 
-export default function EventFilms({ events }) {
+export default function EventFilms({ events, soundOn }) {
   const films = events.filter((e) => e.video);
   if (!films.length) return null;
-  return films.map((e) => <Film key={e.id} event={e} />);
+  return films.map((e) => <Film key={e.id} event={e} soundOn={soundOn} />);
 }
