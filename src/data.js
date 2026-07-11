@@ -52,11 +52,16 @@ export const families = {
   },
 };
 
-/* Venues. Default is used for any event that doesn't override it ------------- */
-const defaultVenue = {
-  name: 'The Grand Pavilion',                                       // ⟵ EDIT
-  area: 'Sector 9, Chandigarh',                                     // ⟵ EDIT
-  mapUrl: 'https://maps.google.com/?q=Chandigarh',                  // ⟵ EDIT
+/* Venues --------------------------------------------------------------------- */
+const brideHome = {
+  name: '3010, Tribune Colony',
+  area: 'Sector 29, Chandigarh',
+  mapUrl: 'https://maps.app.goo.gl/SQxN8fmCPD2m1V5u6',
+};
+const groomHome = {
+  name: 'Guru Kirpa Niwas',
+  area: '32, Gillco Valley Rd, Sector 127, Kharar',
+  mapUrl: 'https://maps.app.goo.gl/VVrJ7hTVdEWrSkzs9',
 };
 const hotelRadius = {
   name: 'Rooftop, Hotel Radius',
@@ -78,11 +83,11 @@ export const events = [
   {
     id: 'kirtan', order: 1, side: 'bride',
     name: 'Sai Sandhya', nameDeva: 'साईं संध्या',
-    dateISO: '2026-11-14', dateLabel: '14–15 Nov', dayLabel: 'Sat–Sun',
+    dateISO: '2026-11-15', dateLabel: '15 Nov', dayLabel: 'Sun',
     timeLabel: 'Evening', icon: 'kirtan',
     blurb: 'An evening of devotional song and blessings to begin the celebrations.',
     dressCode: { label: 'Soft ivory & pastels', color: '#f4ead8' },
-    venue: defaultVenue,
+    venue: brideHome,
     video: '/videos/Sai Sandhya (Sukriti).mp4',
   },
   {
@@ -92,7 +97,7 @@ export const events = [
     timeLabel: 'Morning', icon: 'mehndi',
     blurb: 'Henna, music and laughter as the groom’s side gathers.',
     dressCode: { label: 'Fresh greens', color: '#7faa6a' },
-    venue: defaultVenue,
+    venue: groomHome,
     video: '/videos/Mehndi (Hemant).mp4',
   },
   {
@@ -102,7 +107,7 @@ export const events = [
     timeLabel: 'Afternoon – Evening', icon: 'mehndi',
     blurb: 'Intricate henna and festive cheer for the bride and her guests.',
     dressCode: { label: 'Marigold & green', color: '#d9b441' },
-    venue: defaultVenue,
+    venue: brideHome,
     video: '/videos/Mehndi (Sukriti).mp4',
   },
   {
@@ -112,7 +117,7 @@ export const events = [
     timeLabel: 'Morning', icon: 'path',
     blurb: 'A morning recitation seeking blessings for the union.',
     dressCode: { label: 'Saffron & white', color: '#e08a3c' },
-    venue: defaultVenue,
+    venue: groomHome,
     video: '/videos/Sundarkand Path (Hemant).mp4',
   },
   {
@@ -127,8 +132,8 @@ export const events = [
   },
   {
     id: 'haldi', order: 6, side: 'together',
-    name: 'Ubtan & Utsav', nameDeva: 'उत्सव',
-    dateISO: '2026-11-23', dateLabel: '23 Nov 2026', dayLabel: 'Monday',
+    name: 'Haldi', nameDeva: 'उत्सव',
+    dateISO: '2026-11-23', dateLabel: '23 Nov', dayLabel: 'Monday',
     timeLabel: '9 a.m. onwards', icon: 'haldi',
     blurb: 'Turmeric, sunshine and joy for the bride and groom.',
     dressCode: { label: 'Sunny yellow', color: '#f1c40f' },
@@ -142,7 +147,7 @@ export const events = [
     timeLabel: 'Morning', icon: 'chooda',
     blurb: 'The bride adorns her sacred chooda amid family blessings.',
     dressCode: { label: 'Rose & red', color: '#d05f7a' },
-    venue: defaultVenue,
+    venue: brideHome,
   },
   {
     id: 'sehrabandi-baarat', order: 8, side: 'groom',
@@ -151,7 +156,7 @@ export const events = [
     timeLabel: 'Evening', icon: 'baarat',
     blurb: 'The groom is adorned and sets off in a joyous procession.',
     dressCode: { label: 'Cream & gold', color: '#d4af37' },
-    venue: defaultVenue,
+    venue: groomHome,
   },
   {
     id: 'wedding', order: 9, side: 'together',

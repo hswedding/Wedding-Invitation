@@ -55,9 +55,6 @@ function Film({ event }) {
       <div className="section__inner film__inner">
         <p className="eyebrow film__reveal">{event.dateLabel} · {event.dayLabel}</p>
         <h2 className="display film__reveal">{event.name}</h2>
-        {event.nameDeva && (
-          <p className="film__deva film__reveal" lang="hi">{event.nameDeva}</p>
-        )}
 
         <div className="film__frame film__reveal">
           <video

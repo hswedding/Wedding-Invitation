@@ -51,8 +51,9 @@
   /* radius */
   --r-sm: 8px; --r-md: 14px; --r-lg: 22px; --r-pill: 999px;
 
-  /* layered z-index scale */
-  --z-base: 0; --z-petals: 5; --z-content: 10; --z-nav: 40; --z-toast: 100;
+  /* layered z-index scale — petals sit above content (pointer-events: none)
+     so they rain over every section */
+  --z-base: 0; --z-content: 10; --z-petals: 20; --z-nav: 40; --z-toast: 100;
   --z-panel: 900; --z-envelope: 1000;
 
   /* motion */

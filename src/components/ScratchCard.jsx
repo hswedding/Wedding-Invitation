@@ -41,7 +41,9 @@ export default function ScratchCard({ prompt, children, width = 320, height = 15
     }
 
     let drawing = false;
+    let last = null;
     let lastCheck = 0;
+    const BRUSH = 34;
 
     const pos = (e) => {
       const r = canvas.getBoundingClientRect();
@@ -53,20 +55,33 @@ export default function ScratchCard({ prompt, children, width = 320, height = 15
       e.preventDefault();
       const { x, y } = pos(e);
       ctx.globalCompositeOperation = 'destination-out';
+      // continuous stroke from the last point so fast swipes don't leave gaps
+      ctx.lineWidth = BRUSH * 2;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
       ctx.beginPath();
-      ctx.arc(x, y, 22, 0, Math.PI * 2);
+      ctx.moveTo(last ? last.x : x, last ? last.y : y);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x, y, BRUSH, 0, Math.PI * 2);
       ctx.fill();
+      last = { x, y };
       const now = Date.now();
-      if (now - lastCheck > 250) { lastCheck = now; checkCleared(ctx, w, h, dpr); }
+      if (now - lastCheck > 150) { lastCheck = now; checkCleared(ctx, w, h, dpr); }
     };
     const checkCleared = (c, ww, hh, d) => {
       const img = c.getImageData(0, 0, ww * d, hh * d).data;
       let clear = 0;
       for (let i = 3; i < img.length; i += 40) if (img[i] === 0) clear++;
-      if (clear / (img.length / 40) > 0.55) setRevealed(true);
+      if (clear / (img.length / 40) > 0.4) setRevealed(true);
     };
-    const start = (e) => { drawing = true; scratch(e); };
-    const end = () => { drawing = false; };
+    const start = (e) => { drawing = true; last = null; scratch(e); };
+    const end = () => {
+      if (drawing) checkCleared(ctx, w, h, dpr);
+      drawing = false;
+      last = null;
+    };
 
     canvas.addEventListener('mousedown', start);
     canvas.addEventListener('mousemove', scratch);

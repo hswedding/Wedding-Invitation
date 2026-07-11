@@ -25,8 +25,6 @@ export default function Hero({ invite }) {
           <p className="hero__guest hero__reveal">Dear {invite.guestName},</p>
         )}
 
-        <p className="eyebrow hero__reveal">Save the Date</p>
-
         <h1 className="hero__names hero__reveal">
           <span>{couple.groom.first}</span>
           <span className="hero__amp">&amp;</span>
@@ -34,10 +32,6 @@ export default function Hero({ invite }) {
         </h1>
 
         <p className="hero__line hero__reveal">{family.inviteLine}</p>
-
-        <div className="divider hero__reveal" aria-hidden="true">
-          <Icon name="lotus" size={20} />
-        </div>
 
         <div className="hero__reveal">
           <ScratchCard prompt={wedding.scratchPrompt}>
@@ -47,11 +41,6 @@ export default function Hero({ invite }) {
             </div>
           </ScratchCard>
         </div>
-
-        <a className="hero__scroll hero__reveal" href="#countdown" aria-label="Scroll to continue">
-          <span>Scroll to see the magic</span>
-          <Icon name="arrowDown" size={22} />
-        </a>
       </div>
     </header>
   );
