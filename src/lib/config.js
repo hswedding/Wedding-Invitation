@@ -49,7 +49,6 @@ export function parseInvitation(search = '') {
   const eventIds = sanitiseIds(ids);
 
   const sections = {
-    events: eventIds.length > 0,
     countdown: p.get('countdown') !== '0',
     story: p.get('story') !== '0',
     venue: p.get('venue') !== '0',

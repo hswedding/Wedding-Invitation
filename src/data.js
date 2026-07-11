@@ -180,7 +180,6 @@ export const presets = {
 export const toggleableSections = [
   { id: 'countdown', label: 'Countdown' },
   { id: 'story', label: 'Our Story' },
-  { id: 'events', label: 'Functions' },
   { id: 'venue', label: 'Venue & Travel' },
   { id: 'rsvp', label: 'RSVP' },
 ];

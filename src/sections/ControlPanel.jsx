@@ -147,7 +147,7 @@ export default function ControlPanel() {
         <div className="panel__group">
           <span className="panel__group-label">Sections</span>
           <ul className="panel__checks panel__checks--inline">
-            {toggleableSections.filter((s) => s.id !== 'events').map((s) => (
+            {toggleableSections.map((s) => (
               <li key={s.id}>
                 <label className={state.sections[s.id] ? 'is-on' : ''}>
                   <input type="checkbox" checked={!!state.sections[s.id]}

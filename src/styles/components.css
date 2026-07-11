@@ -139,38 +139,6 @@
 .story__heading { margin: 2px 0 4px; color: var(--sage-deep); }
 .story__text { color: var(--text-mid); margin: 0; }
 
-/* ---- Events (scene 4) ----------------------------------------------------- */
-.events { background: var(--cream-2); text-align: center; }
-.events__list { list-style: none; padding: 0; margin: var(--sp-5) 0 0; display: grid; gap: var(--sp-4); }
-.event-card { position: relative; padding: var(--sp-5); text-align: left; }
-.event-card__side {
-  position: absolute; top: var(--sp-4); right: var(--sp-4);
-  font-family: var(--font-sans); font-size: 0.62rem; letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 4px 10px; border-radius: var(--r-pill);
-  border: 1px solid currentColor;
-}
-.event-card__side--bride { color: var(--rani-text); background: var(--blush-pale); }
-.event-card__side--groom { color: var(--leaf-deep); background: var(--leaf-pale); }
-.event-card__side--together { color: var(--gold-strong); background: var(--gold-pale); }
-.event-card__head { display: flex; align-items: center; gap: var(--sp-3); padding-right: 96px; }
-.event-card__icon {
-  flex: none; width: 52px; height: 52px; border-radius: 50%;
-  display: grid; place-items: center; color: var(--sage-deep);
-  background: var(--sage-light);
-}
-.event-card__name { font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-dark); margin: 0; }
-.event-card__deva { font-family: var(--font-deva); color: var(--sage-dark); margin: 0; font-size: 0.95rem; }
-.event-card__blurb { color: var(--text-mid); margin: var(--sp-3) 0; }
-.event-card__meta { display: grid; gap: var(--sp-3); margin: var(--sp-3) 0; }
-.event-card__meta dt {
-  font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.1em;
-  font-size: 0.62rem; color: var(--sage-dark);
-  display: inline-flex; align-items: center; gap: 6px; margin-bottom: 2px;
-}
-.event-card__meta dd { margin: 0; color: var(--text-dark); }
-.event-card__dress { display: flex; align-items: center; gap: 8px; color: var(--text-mid); margin: 0; font-size: 0.95rem; }
-.event-card__dot { width: 16px; height: 16px; border-radius: 50%; border: 1px solid #0001; flex: none; }
-
 /* ---- Invitation films (Haldi · Mehndi) ------------------------------------ */
 .film {
   text-align: center; overflow: hidden;
@@ -366,7 +334,5 @@ textarea.field__input { resize: vertical; line-height: 1.5; }
 /* ---- Breakpoints ---------------------------------------------------------- */
 @media (min-width: 768px) {
   .section { padding-left: var(--sp-6); padding-right: var(--sp-6); }
-  .events__list { grid-template-columns: 1fr 1fr; }
-  .event-card--wide { grid-column: 1 / -1; }
   .venue__cards { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 }

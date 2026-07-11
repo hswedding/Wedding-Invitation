@@ -9,7 +9,6 @@ import Envelope from './sections/Envelope.jsx';
 import Hero from './sections/Hero.jsx';
 import Countdown from './sections/Countdown.jsx';
 import Story from './sections/Story.jsx';
-import Events from './sections/Events.jsx';
 import EventFilms from './sections/EventFilms.jsx';
 import Venue from './sections/Venue.jsx';
 import Rsvp from './sections/Rsvp.jsx';
@@ -60,7 +59,6 @@ export default function App() {
         <Hero invite={invite} />
         {invite.sections.countdown && <Countdown />}
         {invite.sections.story && <Story />}
-        {invite.sections.events && events.length > 0 && <Events events={events} />}
         <EventFilms events={events} />
         {invite.sections.venue && <Venue events={events} />}
         {invite.sections.rsvp && <Rsvp />}
