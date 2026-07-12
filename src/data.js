@@ -25,7 +25,7 @@ export const wedding = {
 export const families = {
   bride: {
     hosts: 'Mr. & Mrs. Malhotra',                                  // ⟵ EDIT
-    inviteLine: 'request the pleasure of your company at the wedding of their daughter',
+    inviteLine: 'joyfully invite you to celebrate the wedding of their daughter',
     sign: 'With love, the Malhotra Family',                         // ⟵ EDIT
     contacts: [
       { name: 'Manish Malhotra', phone: '+919876500001' },          // ⟵ EDIT
@@ -34,7 +34,7 @@ export const families = {
   },
   groom: {
     hosts: 'Mr. & Mrs. Bahl',                                     // ⟵ EDIT
-    inviteLine: 'request the pleasure of your company at the wedding of their son',
+    inviteLine: 'joyfully invite you to celebrate the wedding of their son',
     sign: 'With love, the Bahl Family',                           // ⟵ EDIT
     contacts: [
       { name: 'Jatinder Bahl', phone: '+919876500003' },           // ⟵ EDIT

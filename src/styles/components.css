@@ -17,15 +17,23 @@
   position: absolute; inset: 0; width: 100%;
   display: flex; align-items: flex-end; justify-content: center;
   padding-bottom: max(14vh, env(safe-area-inset-bottom));
-  border: none; background: transparent; cursor: pointer;
+  border: none; cursor: pointer;
+  /* bottom scrim so the CTA reads on light video frames */
+  background: linear-gradient(180deg, transparent 55%, #00000066);
 }
 .envelope__cta {
   font-family: var(--font-script); font-size: 1.9rem; color: var(--gold-light);
-  margin: 0; display: inline-flex; align-items: center; gap: 8px;
-  text-shadow: 0 2px 12px #00000080;
+  margin: 0; display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 30px 14px; border-radius: 999px;
+  background: #000000a6; border: 1px solid #e9d4b580;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  text-shadow: 0 2px 12px #000000cc;
   animation: pulse 2.4s var(--ease-soft) infinite;
 }
-@keyframes pulse { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 #d4af3766; }
+  50% { transform: scale(1.04); box-shadow: 0 0 0 12px #d4af3700; }
+}
 .envelope__skip {
   position: absolute; right: var(--sp-5); bottom: max(var(--sp-5), env(safe-area-inset-bottom));
   display: inline-flex; align-items: center; gap: 6px;
@@ -61,6 +69,10 @@
   display: grid; gap: 2px; margin: 0;
 }
 .hero__amp { font-family: var(--font-script); color: var(--gold); font-size: 0.6em; }
+.hero__hosts {
+  font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.22em;
+  font-size: 0.78rem; color: var(--sage-dark); margin: 0;
+}
 .hero__line {
   font-family: var(--font-body); font-style: italic; color: var(--text-mid);
   max-width: 30ch; margin: 0;
@@ -72,8 +84,12 @@
 }
 .hero__date-main { font-family: var(--font-serif); font-size: 1.7rem; color: var(--text-dark); }
 .hero__scroll {
-  margin-top: var(--sp-4); display: grid; justify-items: center; gap: 4px;
-  text-decoration: none; color: var(--sage-deep);
+  /* centered with margins, not transform — GSAP animates transform on reveal */
+  position: absolute; left: 0; right: 0; margin: 0 auto; width: max-content;
+  bottom: max(var(--sp-4), env(safe-area-inset-bottom));
+  display: grid; justify-items: center; gap: 4px;
+  border: none; background: none; padding: var(--sp-2) var(--sp-4);
+  color: var(--sage-deep);
   font-family: var(--font-sans); font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
 }
 .hero__scroll svg { animation: bob 1.8s ease-in-out infinite; }

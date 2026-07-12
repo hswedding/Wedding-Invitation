@@ -18,6 +18,13 @@ export default function Hero({ invite }) {
     });
   }, { scope: root });
 
+  const scrollToNext = () => {
+    const next = root.current?.nextElementSibling;
+    if (!next) return;
+    if (window.__lenis) window.__lenis.scrollTo(next);
+    else next.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <header className="hero section" id="hero" ref={root}>
       <div className="section__inner hero__inner">
@@ -27,13 +34,14 @@ export default function Hero({ invite }) {
           <p className="hero__guest hero__reveal">Dear {invite.guestName},</p>
         )}
 
+        <p className="hero__hosts hero__reveal">{family.hosts}</p>
+        <p className="hero__line hero__reveal">{family.inviteLine}</p>
+
         <h1 className="hero__names hero__reveal">
           <span>{first.first}</span>
           <span className="hero__amp">&amp;</span>
           <span>{second.first}</span>
         </h1>
-
-        <p className="hero__line hero__reveal">{family.inviteLine}</p>
 
         <div className="hero__reveal">
           <ScratchCard prompt={wedding.scratchPrompt}>
@@ -44,6 +52,16 @@ export default function Hero({ invite }) {
           </ScratchCard>
         </div>
       </div>
+
+      <button
+        type="button"
+        className="hero__scroll hero__reveal"
+        onClick={scrollToNext}
+        aria-label="Scroll down to see the celebrations"
+      >
+        <span>Scroll to explore</span>
+        <Icon name="chevronDown" size={20} />
+      </button>
     </header>
   );
 }
