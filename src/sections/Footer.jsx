@@ -1,13 +1,11 @@
 import { couple, families } from '../data.js';
-import { buildWhatsAppShare, orderedCouple } from '../lib/config.js';
+import { orderedCouple } from '../lib/config.js';
 import Icon from '../components/Icons.jsx';
 
-/* Footer — gratitude, family contacts, hashtag, and a WhatsApp share CTA. */
+/* Footer — gratitude, family contacts, and hashtag. */
 export default function Footer({ invite }) {
   const family = families[invite.side] || families.joint;
   const names = orderedCouple(invite.side).map((c) => c.first).join(' & ');
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
-  const shareHref = buildWhatsAppShare(shareUrl, invite.guestName, names);
 
   return (
     <footer className="footer section" id="footer-section">
@@ -26,11 +24,6 @@ export default function Footer({ invite }) {
             </li>
           ))}
         </ul>
-
-        <a className="btn btn--primary footer__share" href={shareHref}
-          target="_blank" rel="noopener noreferrer">
-          <Icon name="whatsapp" size={18} /> Share this invitation
-        </a>
 
         <p className="footer__hashtag">{couple.hashtag}</p>
       </div>
