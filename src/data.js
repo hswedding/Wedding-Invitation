@@ -9,7 +9,7 @@ export const couple = {
   groom: { first: 'Hemant', full: 'Hemant' },
   bride: { first: 'Sukriti', full: 'Sukriti' },
   monogram: 'H&S',
-  hashtag: '#HemantWedsSukriti',
+  hashtag: '#SukHeverafter',
 };
 
 /* The wedding moment (countdown + hero target). ISO local time. ------------- */
