@@ -53,6 +53,7 @@ a { color: var(--sage-deep); }
   position: relative;
   z-index: var(--z-content);
   padding: var(--sp-7) var(--sp-4);
+  overflow-x: clip; /* bleeding decor must never widen the page on mobile */
 }
 .section__inner { max-width: 680px; margin: 0 auto; }
 
