@@ -59,7 +59,7 @@ export default function App() {
       <main className="page" id="main-content" aria-hidden={!opened}>
         <Hero invite={invite} />
         {invite.sections.countdown && <Countdown />}
-        <EventFilms events={events} soundOn={soundOn} />
+        <EventFilms events={events} side={invite.side} soundOn={soundOn} />
         {invite.sections.venue && <Venue events={events} />}
         {invite.sections.rsvp && <Rsvp />}
         <Footer invite={invite} />

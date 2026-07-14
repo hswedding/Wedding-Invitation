@@ -166,6 +166,11 @@ export const events = [
     blurb: 'The sacred pheras — where two souls become one.',
     dressCode: { label: 'Festive best', color: '#8a1f2b' },
     venue: dullatResort,
+    // Per-side films: the guest's `side` picks which one plays (joint → groom).
+    videoBySide: {
+      groom: '/videos/Wedding (Hemant).mp4',
+      bride: '/videos/Wedding (Sukriti).mp4',
+    },
   },
 ];
 

@@ -79,8 +79,17 @@ function Film({ event, soundOn }) {
   );
 }
 
-export default function EventFilms({ events, soundOn }) {
-  const films = events.filter((e) => e.video);
+export default function EventFilms({ events, side, soundOn }) {
+  // `video` is a single film; `videoBySide` holds one per hosting side —
+  // side variants get their own, joint shows both (groom first, like the hero).
+  const films = events.flatMap((e) => {
+    if (e.video) return [e];
+    if (!e.videoBySide) return [];
+    const sides = side === 'bride' || side === 'groom' ? [side] : ['groom', 'bride'];
+    return sides
+      .filter((s) => e.videoBySide[s])
+      .map((s) => ({ ...e, id: sides.length > 1 ? `${e.id}-${s}` : e.id, video: e.videoBySide[s] }));
+  });
   if (!films.length) return null;
   return films.map((e) => <Film key={e.id} event={e} soundOn={soundOn} />);
 }
