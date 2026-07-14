@@ -70,7 +70,7 @@ const hotelRadius = {
 };
 const dullatResort = {
   name: 'Dullat Resort',
-  area: '',                                                          // ⟵ EDIT add city/area
+  area: 'Sector 118, Sahibzada Ajit Singh Nagar, Punjab 140307',                                                          // ⟵ EDIT add city/area
   mapUrl: 'https://maps.google.com/?q=Dullat+Resort',                // ⟵ EDIT refine map link
 };
 
@@ -161,7 +161,7 @@ export const events = [
   {
     id: 'wedding', order: 9, side: 'together',
     name: 'The Wedding', nameDeva: 'विवाह',
-    dateISO: '2026-11-24', dateLabel: '24 November 2026', dayLabel: 'Tuesday',
+    dateISO: '2026-11-24', dateLabel: '24 Nov', dayLabel: 'Tuesday',
     timeLabel: 'Night', icon: 'wedding',
     blurb: 'The sacred pheras — where two souls become one.',
     dressCode: { label: 'Festive best', color: '#8a1f2b' },
