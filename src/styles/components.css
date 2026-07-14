@@ -4,6 +4,28 @@
 
 .page { position: relative; z-index: var(--z-content); }
 
+/* ---- Watercolor decor (cropped from the couple's artwork sheet) ------------ */
+/* multiply melts the pale washes into the ivory paper; z-index -1 keeps each
+   piece above its section's background but behind all content. */
+.decor {
+  position: absolute; pointer-events: none; user-select: none;
+  mix-blend-mode: multiply; z-index: -1;
+}
+.decor--hero-tl { top: 0; left: 0; width: clamp(150px, 38vw, 290px); opacity: 0.75; }
+.decor--hero-br { bottom: 0; right: 0; width: clamp(140px, 34vw, 270px); opacity: 0.75; }
+.decor--hero-wash {
+  top: 50%; left: 50%; transform: translate(-50%, -56%);
+  width: min(560px, 94vw); opacity: 0.45;
+}
+.decor--countdown {
+  top: var(--sp-6); right: -14px; width: clamp(100px, 24vw, 160px);
+  transform: rotate(-14deg); opacity: 0.65;
+}
+.decor--footer {
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: min(400px, 76vw); opacity: 0.5;
+}
+
 /* ---- Envelope film (scene 0) ---------------------------------------------- */
 .envelope {
   position: fixed; inset: 0; z-index: var(--z-envelope);

@@ -1,6 +1,7 @@
 import { couple, families } from '../data.js';
 import { orderedCouple } from '../lib/config.js';
 import Icon from '../components/Icons.jsx';
+import palace from '../Images/decor/palace.png';
 
 /* Footer — gratitude, family contacts, and hashtag. */
 export default function Footer({ invite }) {
@@ -9,6 +10,7 @@ export default function Footer({ invite }) {
 
   return (
     <footer className="footer section" id="footer-section">
+      <img className="decor decor--footer" src={palace} alt="" aria-hidden="true" loading="lazy" />
       <div className="section__inner">
         <Icon name="lotus" size={30} className="footer__crest" />
         <h2 className="display footer__thanks">Thank You</h2>

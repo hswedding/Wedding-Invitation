@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap, useGSAP } from '../lib/gsap.js';
 import { wedding } from '../data.js';
+import feather from '../Images/decor/feather.png';
 
 const target = new Date(wedding.dateTimeISO).getTime();
 
@@ -39,6 +40,7 @@ export default function Countdown() {
 
   return (
     <section className="countdown section" id="countdown-section" ref={root}>
+      <img className="decor decor--countdown" src={feather} alt="" aria-hidden="true" loading="lazy" />
       <div className="section__inner">
         <p className="eyebrow">The Date</p>
         <h2 className="display">{t.done ? 'We’re Married!' : 'Counting Down'}</h2>

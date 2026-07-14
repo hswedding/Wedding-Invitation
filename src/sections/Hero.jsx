@@ -4,6 +4,9 @@ import { wedding, families } from '../data.js';
 import { orderedCouple } from '../lib/config.js';
 import ScratchCard from '../components/ScratchCard.jsx';
 import Icon from '../components/Icons.jsx';
+import floralLeft from '../Images/decor/floral-corner-left.png';
+import floralRight from '../Images/decor/floral-corner-right.png';
+import wash from '../Images/decor/wash.png';
 
 /* Scene 1 — Save the Date. Opens with the Ganesha invocation (Indian fusion),
    the couple's names, and a scratch card hiding the wedding date. */
@@ -27,6 +30,9 @@ export default function Hero({ invite }) {
 
   return (
     <header className="hero section" id="hero" ref={root}>
+      <img className="decor decor--hero-tl" src={floralLeft} alt="" aria-hidden="true" />
+      <img className="decor decor--hero-br" src={floralRight} alt="" aria-hidden="true" />
+      <img className="decor decor--hero-wash" src={wash} alt="" aria-hidden="true" />
       <div className="section__inner hero__inner">
         <p className="hero__invocation hero__reveal" lang="sa">॥ श्री गणेशाय नमः ॥</p>
 
