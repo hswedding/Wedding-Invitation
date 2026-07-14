@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap, useGSAP } from '../lib/gsap.js';
 import { wedding } from '../data.js';
 import feather from '../Images/decor/feather.png';
+import divider from '../Images/decor/divider.png';
 
 const target = new Date(wedding.dateTimeISO).getTime();
 
@@ -55,6 +56,7 @@ export default function Countdown() {
           </div>
         )}
         <p className="countdown__sub">{wedding.dayLabel}, {wedding.dateLabel}</p>
+        <img className="decor-divider" src={divider} alt="" aria-hidden="true" loading="lazy" />
       </div>
     </section>
   );

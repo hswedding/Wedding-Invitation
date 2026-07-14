@@ -25,6 +25,13 @@
   bottom: 0; left: 50%; transform: translateX(-50%);
   width: min(400px, 76vw); opacity: 0.5;
 }
+/* in-flow flourish that closes the countdown, leading into the films */
+.decor-divider {
+  display: block; margin: var(--sp-7) auto 0;
+  width: min(620px, 92vw);
+  mix-blend-mode: multiply; opacity: 0.85;
+  pointer-events: none; user-select: none;
+}
 
 /* ---- Envelope film (scene 0) ---------------------------------------------- */
 .envelope {
