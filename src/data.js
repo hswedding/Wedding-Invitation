@@ -18,7 +18,7 @@ export const wedding = {
   dateTimeISO: '2026-11-24T21:00:00',
   dateLabel: '24 November 2026',
   dayLabel: 'Tuesday',
-  scratchPrompt: 'Scratch below to reveal our wedding date',
+  scratchPrompt: 'Scratch to reveal our wedding date',
 };
 
 /* Hosting families — drives the "voice" of each side's invitation ----------- */
@@ -147,7 +147,7 @@ export const events = [
     timeLabel: 'Morning', icon: 'chooda',
     blurb: 'The bride adorns her sacred chooda amid family blessings.',
     dressCode: { label: 'Rose & red', color: '#d05f7a' },
-    venue: brideHome,
+    venue: hotelRadius,
   },
   {
     id: 'sehrabandi-baarat', order: 8, side: 'groom',

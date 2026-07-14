@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from '../hooks/useReducedMotion.js';
-import Icon from './Icons.jsx';
 
 /* Canvas scratch-to-reveal. The revealed content sits underneath; a foil cover
    is erased as the guest scratches. Auto-reveals past ~55%. Falls back to the
@@ -38,6 +37,17 @@ export default function ScratchCard({ prompt, children, width = 320, height = 15
     ctx.fillStyle = 'rgba(255,255,255,0.18)';
     for (let i = 0; i < 60; i++) {
       ctx.fillRect(Math.random() * w, Math.random() * h, 2, 2);
+    }
+
+    // the prompt sits on the foil itself, so it is scratched away with it
+    if (prompt) {
+      const family =
+        getComputedStyle(canvas).getPropertyValue('--font-sans').trim() || 'sans-serif';
+      ctx.font = `500 15px ${family}`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = 'rgba(92, 70, 14, 0.85)';
+      ctx.fillText(`✦ ${prompt}`, w / 2, h / 2);
     }
 
     let drawing = false;
@@ -95,15 +105,75 @@ export default function ScratchCard({ prompt, children, width = 320, height = 15
       canvas.removeEventListener('touchmove', scratch);
       window.removeEventListener('touchend', end);
     };
-  }, [useCanvas, revealed]);
+  }, [useCanvas, revealed, prompt]);
+
+  // Confetti burst over the card once the foil is scratched away. Drawn on a
+  // temporary full-viewport canvas so pieces can fly past the card's
+  // overflow:hidden wrap; removed as soon as the burst settles.
+  useEffect(() => {
+    if (!revealed || reduced) return;
+    const rect = wrapRef.current?.getBoundingClientRect();
+    const canvas = document.createElement('canvas');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    Object.assign(canvas.style, {
+      position: 'fixed', inset: '0', width: '100%', height: '100%',
+      pointerEvents: 'none', zIndex: 30,
+    });
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    const cx = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
+    const cy = rect ? rect.top + rect.height / 2 : window.innerHeight / 2;
+    const COLORS = ['#d4af37', '#e7c98f', '#bfa15f', '#d05f7a', '#7faa6a', '#f4ead8'];
+    const GRAVITY = 900, DRAG = 0.985, DURATION = 2400;
+    const parts = Array.from({ length: 140 }, () => {
+      const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.2 * Math.PI;
+      const speed = 260 + Math.random() * 420;
+      return {
+        x: cx, y: cy,
+        vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+        w: 5 + Math.random() * 5, h: 8 + Math.random() * 7,
+        rot: Math.random() * Math.PI * 2, vr: (Math.random() - 0.5) * 14,
+        flutter: 2 + Math.random() * 4,
+        color: COLORS[(Math.random() * COLORS.length) | 0],
+      };
+    });
+
+    let raf, start, prev;
+    const tick = (t) => {
+      if (start === undefined) { start = prev = t; }
+      const dt = Math.min((t - prev) / 1000, 0.032);
+      prev = t;
+      const elapsed = t - start;
+      const fade = Math.min(1, Math.max(0, (DURATION - elapsed) / (DURATION * 0.3)));
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of parts) {
+        p.vy += GRAVITY * dt;
+        p.vx *= DRAG; p.vy *= DRAG;
+        p.x += p.vx * dt; p.y += p.vy * dt;
+        p.rot += p.vr * dt;
+        ctx.save();
+        ctx.globalAlpha = fade;
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        // flutter: squash the width as the piece "tumbles"
+        ctx.scale(Math.sin(elapsed / 1000 * p.flutter + p.rot), 1);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      }
+      if (elapsed < DURATION) raf = requestAnimationFrame(tick);
+      else canvas.remove();
+    };
+    raf = requestAnimationFrame(tick);
+    return () => { cancelAnimationFrame(raf); canvas.remove(); };
+  }, [revealed, reduced]);
 
   return (
     <div className="scratch">
-      {prompt && !revealed && useCanvas && (
-        <p className="scratch__prompt">
-          <Icon name="sparkle" size={16} /> {prompt}
-        </p>
-      )}
       <div className="scratch__wrap" ref={wrapRef} style={{ minHeight: height }}>
         <div className="scratch__reveal">{children}</div>
         {useCanvas && !revealed && (
