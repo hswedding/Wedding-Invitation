@@ -27,6 +27,8 @@ export default function App() {
 
   // Lock scroll behind the envelope; refresh scroll positions once revealed.
   useEffect(() => {
+    // iOS ignores overflow:hidden on body alone — lock html too.
+    document.documentElement.style.overflow = opened ? '' : 'hidden';
     document.body.style.overflow = opened ? '' : 'hidden';
     if (opened) {
       const t = setTimeout(() => ScrollTrigger.refresh(), 120);

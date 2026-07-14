@@ -3,7 +3,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: hidden; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -52,7 +52,7 @@ a { color: var(--sage-deep); }
 .section {
   position: relative;
   z-index: var(--z-content);
-  padding: var(--sp-9) var(--sp-5);
+  padding: var(--sp-7) var(--sp-4);
 }
 .section__inner { max-width: 680px; margin: 0 auto; }
 

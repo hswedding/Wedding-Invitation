@@ -37,6 +37,7 @@
 .envelope {
   position: fixed; inset: 0; z-index: var(--z-envelope);
   overflow: hidden; background: var(--cream-2);
+  touch-action: none; /* block touch-scroll gestures reaching the page behind */
 }
 .envelope__film {
   position: absolute; inset: 0; width: 100%; height: 100%;
