@@ -64,6 +64,15 @@
   0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 #d4af3766; }
   50% { transform: scale(1.04); box-shadow: 0 0 0 12px #d4af3700; }
 }
+.envelope__loading {
+  position: absolute; left: 50%; bottom: max(14vh, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  padding: 8px 18px; border-radius: 999px;
+  background: #00000073; color: var(--gold-light);
+  font-family: var(--font-sans); font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  animation: pulse 2.4s var(--ease-soft) infinite;
+}
 .envelope__skip {
   position: absolute; right: var(--sp-5); bottom: max(var(--sp-5), env(safe-area-inset-bottom));
   display: inline-flex; align-items: center; gap: 6px;

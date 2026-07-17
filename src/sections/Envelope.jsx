@@ -1,7 +1,12 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from '../lib/gsap.js';
 import { useReducedMotion } from '../hooks/useReducedMotion.js';
 import Icon from '../components/Icons.jsx';
+
+/* How long we let the film buffer (after tap, or mid-play stall) before
+   giving up and revealing the page — guests on slow mobile data must never
+   be stuck on a black screen. */
+const STALL_TIMEOUT_MS = 8000;
 
 /* Scene 0 — the envelope film IS the opening screen. It sits full-screen on
    its first frame; a tap plays it with sound, and when it ends (or is
@@ -10,8 +15,19 @@ import Icon from '../components/Icons.jsx';
 export default function Envelope({ onOpen }) {
   const root = useRef(null);
   const videoRef = useRef(null);
+  const watchdog = useRef(null);
   const reduced = useReducedMotion();
   const [playing, setPlaying] = useState(false);
+  const [buffering, setBuffering] = useState(false);
+
+  const clearWatchdog = () => {
+    if (watchdog.current) { clearTimeout(watchdog.current); watchdog.current = null; }
+  };
+  const armWatchdog = () => {
+    clearWatchdog();
+    watchdog.current = setTimeout(closeOverlay, STALL_TIMEOUT_MS);
+  };
+  useEffect(() => clearWatchdog, []);
 
   const open = () => {
     if (playing) return;
@@ -23,6 +39,10 @@ export default function Envelope({ onOpen }) {
     const video = videoRef.current;
     if (!video) return closeOverlay();
     setPlaying(true);
+    // Mobile browsers on cellular skip preload, so nothing may be buffered
+    // yet — show a hint and bail out if playback never starts.
+    setBuffering(true);
+    armWatchdog();
     // A user gesture, so playing with sound is allowed; fall back to muted.
     video.play().catch(() => {
       video.muted = true;
@@ -31,6 +51,7 @@ export default function Envelope({ onOpen }) {
   };
 
   const closeOverlay = () => {
+    clearWatchdog();
     videoRef.current?.pause();
     gsap.to(root.current, {
       autoAlpha: 0, duration: 0.8, ease: 'power2.inOut', onComplete: finish,
@@ -52,6 +73,8 @@ export default function Envelope({ onOpen }) {
         src="/videos/envelop.mp4"
         playsInline
         preload="auto"
+        onPlaying={() => { setBuffering(false); clearWatchdog(); }}
+        onWaiting={() => { if (playing) { setBuffering(true); armWatchdog(); } }}
         onEnded={closeOverlay}
         onError={() => closeOverlay()}
         aria-label="Envelope opening film"
@@ -68,6 +91,10 @@ export default function Envelope({ onOpen }) {
             <Icon name="sparkle" size={16} /> Tap to Open
           </span>
         </button>
+      )}
+
+      {playing && buffering && (
+        <span className="envelope__loading" aria-live="polite">Opening…</span>
       )}
 
       {playing && (
