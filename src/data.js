@@ -83,7 +83,7 @@ export const events = [
   {
     id: 'kirtan', order: 1, side: 'bride',
     name: 'Sai Sandhya', nameDeva: 'साईं संध्या',
-    dateISO: '2026-11-15', dateLabel: '15 Nov', dayLabel: 'Sunday',
+    dateISO: '2026-11-14', dateLabel: '14 Nov', dayLabel: 'Saturday',
     timeLabel: 'Evening', icon: 'kirtan',
     blurb: 'An evening of devotional song and blessings to begin the celebrations.',
     dressCode: { label: 'Soft ivory & pastels', color: '#f4ead8' },
