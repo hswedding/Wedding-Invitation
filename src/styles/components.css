@@ -97,10 +97,15 @@
     radial-gradient(140% 80% at 50% -10%, var(--gold-wash), transparent 60%);
 }
 .hero__inner { display: grid; justify-items: center; gap: var(--sp-4); text-align: center; }
+.hero__ganesha {
+  width: clamp(84px, 26vw, 128px); height: auto; margin: 0 auto var(--sp-2);
+  display: block;
+}
 .hero__invocation {
   font-family: var(--font-deva); font-size: 1.15rem; color: var(--sage-deep);
   letter-spacing: 0.04em; margin: 0;
 }
+.hero__invocation-line { display: block; }
 .hero__guest { font-family: var(--font-script); font-size: 1.7rem; color: var(--sage-dark); margin: 0; }
 .hero__names {
   font-family: var(--font-display); color: var(--sage-deep);
@@ -108,6 +113,10 @@
   display: grid; gap: 2px; margin: 0;
 }
 .hero__amp { font-family: var(--font-script); color: var(--gold); font-size: 0.6em; }
+.hero__parents {
+  font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.14em;
+  font-size: 0.7rem; color: var(--sage-dark); line-height: 1.5; margin: 6px 0 4px;
+}
 .hero__hosts {
   font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.22em;
   font-size: 0.78rem; color: var(--sage-dark); margin: 0;

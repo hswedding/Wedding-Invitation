@@ -6,8 +6,8 @@
 
 /* The couple ---------------------------------------------------------------- */
 export const couple = {
-  groom: { first: 'Hemant', full: 'Hemant' },
-  bride: { first: 'Sukriti', full: 'Sukriti' },
+  groom: { first: 'Hemant', full: 'Hemant', role: 'groom' },
+  bride: { first: 'Sukriti', full: 'Sukriti', role: 'bride' },
   monogram: 'H&S',
   hashtag: '#SukHeverafter',
 };
@@ -24,8 +24,13 @@ export const wedding = {
 /* Hosting families — drives the "voice" of each side's invitation ----------- */
 export const families = {
   bride: {
-    hosts: 'Mr. & Mrs. Malhotra',                                  // ⟵ EDIT
-    inviteLine: 'joyfully invite you to celebrate the wedding of their daughter',
+    ganesha: ['वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।', 'निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥'],
+    hosts: 'Mrs. Usha & Late Mr. Prem Malhotra',
+    inviteLine: 'joyfully invite you to celebrate the wedding of',
+    parents: {
+      groom: 'S/o Mrs. Neeru & Mr. Jatinder Bahl',
+      bride: 'D/o Mrs. Ashu & Mr. Manish Malhotra',
+    },
     sign: 'With love, the Malhotra Family',                         // ⟵ EDIT
     contacts: [
       { name: 'Manish Malhotra', phone: '+919876500001' },          // ⟵ EDIT
@@ -33,8 +38,13 @@ export const families = {
     ],
   },
   groom: {
-    hosts: 'Mr. & Mrs. Bahl',                                     // ⟵ EDIT
-    inviteLine: 'joyfully invite you to celebrate the wedding of their son',
+    invocation: 'श्री गुरु महाराज जी सदा सहायक',
+    hosts: 'Smt. Kamal & Sh. Parveen Kumar Bahl',
+    inviteLine: 'joyfully invite you to celebrate the wedding of',
+    parents: {
+      groom: 'S/o Smt. Neeru & Sh. Jatinder Bahl',
+      bride: 'D/o Smt. Ashu & Sh. Manish Malhotra',
+    },
     sign: 'With love, the Bahl Family',                           // ⟵ EDIT
     contacts: [
       { name: 'Jatinder Bahl', phone: '+919876500003' },           // ⟵ EDIT
@@ -42,8 +52,13 @@ export const families = {
     ],
   },
   joint: {
+    ganesha: ['॥ श्री गणेशाय नमः ॥'],
     hosts: 'The Bahl & Malhotra Families',                        // ⟵ EDIT
     inviteLine: 'joyfully invite you to celebrate the wedding of',
+    parents: {
+      groom: 'S/o Smt. Neeru & Sh. Jatinder Bahl',
+      bride: 'D/o Smt. Ashu & Sh. Manish Malhotra',
+    },
     sign: 'With love, the Bahl & Malhotra Families',
     contacts: [
       { name: 'Manish Malhotra', phone: '+919876500001' },

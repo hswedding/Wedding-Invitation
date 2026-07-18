@@ -7,6 +7,7 @@ import Icon from '../components/Icons.jsx';
 import floralLeft from '../Images/decor/floral-corner-left.png';
 import floralRight from '../Images/decor/floral-corner-right.png';
 import wash from '../Images/decor/wash.png';
+import ganesha from '../Images/ganesha.png';
 
 /* Scene 1 — Save the Date. Opens with the Ganesha invocation (Indian fusion),
    the couple's names, and a scratch card hiding the wedding date. */
@@ -34,7 +35,17 @@ export default function Hero({ invite }) {
       <img className="decor decor--hero-br" src={floralRight} alt="" aria-hidden="true" />
       <img className="decor decor--hero-wash" src={wash} alt="" aria-hidden="true" />
       <div className="section__inner hero__inner">
-        <p className="hero__invocation hero__reveal" lang="sa">॥ श्री गणेशाय नमः ॥</p>
+        <img className="hero__ganesha hero__reveal" src={ganesha} alt="Lord Ganesha" />
+        {family.ganesha && (
+          <p className="hero__invocation hero__reveal" lang="sa">
+            {family.ganesha.map((line, i) => (
+              <span key={i} className="hero__invocation-line">{line}</span>
+            ))}
+          </p>
+        )}
+        {family.invocation && (
+          <p className="hero__invocation hero__reveal" lang="hi">{family.invocation}</p>
+        )}
 
         {invite.guestName && (
           <p className="hero__guest hero__reveal">Dear {invite.guestName},</p>
@@ -45,8 +56,14 @@ export default function Hero({ invite }) {
 
         <h1 className="hero__names hero__reveal">
           <span>{first.first}</span>
+          {family.parents?.[first.role] && (
+            <span className="hero__parents">{family.parents[first.role]}</span>
+          )}
           <span className="hero__amp">&amp;</span>
           <span>{second.first}</span>
+          {family.parents?.[second.role] && (
+            <span className="hero__parents">{family.parents[second.role]}</span>
+          )}
         </h1>
 
         <div className="hero__reveal">
