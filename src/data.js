@@ -41,7 +41,6 @@ export const families = {
     invocation: 'श्री गुरु महाराज जी सदा सहायक',
     hosts: 'Smt. Kamal & Sh. Parveen Kumar Bahl',
     inviteLine: 'joyfully invite you to celebrate the wedding of their grandson',
-    conjunction: 'with',
     parents: {
       groom: 'S/o Smt. Neeru & Sh. Jatinder Bahl',
       bride: 'D/o Smt. Ashu & Sh. Manish Malhotra',
@@ -56,7 +55,6 @@ export const families = {
     ganesha: ['॥ श्री गणेशाय नमः ॥'],
     hosts: 'The Bahl & Malhotra Families',                        // ⟵ EDIT
     inviteLine: 'joyfully invite you to celebrate the wedding of',
-    conjunction: 'with',
     parents: {
       groom: 'S/o Smt. Neeru & Sh. Jatinder Bahl',
       bride: 'D/o Smt. Ashu & Sh. Manish Malhotra',

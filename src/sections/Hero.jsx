@@ -59,9 +59,7 @@ export default function Hero({ invite }) {
           {family.parents?.[first.role] && (
             <span className="hero__parents">{family.parents[first.role]}</span>
           )}
-          <span className={`hero__amp${family.conjunction ? ' hero__amp--word' : ''}`}>
-            {family.conjunction || '&'}
-          </span>
+          <span className="hero__amp">&amp;</span>
           <span>{second.first}</span>
           {family.parents?.[second.role] && (
             <span className="hero__parents">{family.parents[second.role]}</span>
