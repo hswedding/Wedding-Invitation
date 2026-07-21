@@ -87,7 +87,7 @@
 /* ---- Hero (scene 1) ------------------------------------------------------- */
 .hero {
   min-height: var(--stable-vh); display: flex; align-items: center;
-  padding-top: var(--sp-9); padding-bottom: var(--sp-8);
+  padding-top: var(--sp-5); padding-bottom: var(--sp-8);
   /* soft golden bokeh + a blush glow, echoing the invitation films */
   background:
     radial-gradient(circle 90px at 12% 18%, #efc55e26, transparent 70%),
