@@ -113,6 +113,10 @@
   display: grid; gap: 2px; margin: 0;
 }
 .hero__amp { font-family: var(--font-script); color: var(--gold); font-size: 0.6em; }
+/* a word ("with") keeps the script font but needs less scale than the "&" glyph */
+.hero__amp--word {
+  font-size: 0.5em; margin: 0.1em 0;
+}
 .hero__parents {
   font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.14em;
   font-size: 0.7rem; color: var(--sage-dark); line-height: 1.5; margin: 6px 0 4px;
