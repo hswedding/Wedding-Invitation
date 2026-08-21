@@ -6,8 +6,9 @@ import Icon from '../components/Icons.jsx';
 /* Scene 4b — Invitation films. Each function that carries a `video` is shown
    as its own cinematic scene: the Canva invitation film in an ornate gold
    frame that starts playing the moment it scrolls into view and pauses when
-   it leaves. Muted by default (autoplay policy); the app-wide sound toggle
-   in App.jsx unmutes every film at once. */
+   it leaves. The markup is muted (autoplay policy); the app-wide sound toggle
+   in App.jsx unmutes every film at once. The films carry no audio of their
+   own, so they play over the background score rather than replacing it. */
 
 function Film({ event, soundOn }) {
   const wrap = useRef(null);

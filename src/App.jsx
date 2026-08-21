@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import { useConfig } from './hooks/useConfig.js';
 import { selectedEvents } from './lib/config.js';
+import { config } from './data.js';
 import { gsap, ScrollTrigger } from './lib/gsap.js';
 import { useReducedMotion } from './hooks/useReducedMotion.js';
+import useBackgroundMusic from './hooks/useBackgroundMusic.js';
 
 import Envelope from './sections/Envelope.jsx';
 import Hero from './sections/Hero.jsx';
@@ -22,8 +24,14 @@ export default function App() {
   const reduced = useReducedMotion();
   // Host preview skips the envelope so the page is visible behind the panel.
   const [opened, setOpened] = useState(invite.isHost);
-  // App-wide sound for the invitation films (videos autoplay muted).
-  const [soundOn, setSoundOn] = useState(false);
+  // App-wide sound: the looping background score plus the invitation films
+  // (videos autoplay muted). On by default — the envelope tap is the gesture
+  // that lets the browser start audio.
+  const [soundOn, setSoundOn] = useState(true);
+
+  // The score runs for the whole page — the films carry no audio of their own,
+  // so nothing ever interrupts it except the toggle.
+  useBackgroundMusic(config.bgMusic, opened && soundOn);
 
   // Lock scroll behind the envelope; refresh scroll positions once revealed.
   useEffect(() => {

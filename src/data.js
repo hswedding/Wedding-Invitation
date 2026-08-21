@@ -219,6 +219,9 @@ export const config = {
   rsvpWhatsApp: '919876500001',
   // RSVP success sound effect (optional). public/assets/yay.mp3
   yaySfx: '/assets/yay.mp3',
+  // Looping background score, played while the sound toggle is on. Lives in
+  // public/ — the %20 is the space in the file name. ⟵ EDIT
+  bgMusic: '/global%20music.mp3',
   // Default site URL used by the control panel to build share links.
   // Leave '' to auto-detect from the browser. ⟵ EDIT once deployed.
   siteUrl: '',
